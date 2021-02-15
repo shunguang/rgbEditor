@@ -27,7 +27,7 @@ using namespace libyuv;
 
 std::string locateCfgFile(const std::string &f0);
 
-int test_xVideoEditor(int argc, char **argv)
+int test_rgbEditor(int argc, char **argv)
 {
 	//--------------------------------------------------------------------
 	//read cfg file

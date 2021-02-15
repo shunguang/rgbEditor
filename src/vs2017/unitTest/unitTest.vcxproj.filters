@@ -18,7 +18,7 @@
     <ClCompile Include="..\..\unitTest\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\unitTest\test_xVideoEditor.cpp">
+    <ClCompile Include="..\..\unitTest\test_rgbEditor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

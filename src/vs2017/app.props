@@ -2,9 +2,9 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup Label="UserMacros">
-    <PROJ_SRC>C:\Projects\xVideoEditor\src</PROJ_SRC>
-    <PROJ_BUILD>C:\Projects\xVideoEditor\vs14-x64\int</PROJ_BUILD>
-    <PROJ_EXPORT>C:\Projects\xVideoEditor\vs14-x64\bin</PROJ_EXPORT>
+    <PROJ_SRC>C:\Projects\rgbEditor\src</PROJ_SRC>
+    <PROJ_BUILD>C:\Projects\rgbEditor\vs14-x64\int</PROJ_BUILD>
+    <PROJ_EXPORT>C:\Projects\rgbEditor\vs14-x64\bin</PROJ_EXPORT>
 
     <FFTW_X64>C:\pkg\fftw\fftw-3.3.5-dll64</FFTW_X64>	
     <BOOST_INC>C:\pkg\boost_1_63_0</BOOST_INC>

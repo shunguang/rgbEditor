@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cfg>
+    <games>
+        <game>
+            <name>SAC_U14 vs XYZ_U14</name>
+            <date>08/19/2017</date>
+            <score>W2-1</score>
+            <skip>0</skip>
+            <inputVideoFileFilter>Videos (*.mp4 *.avi *.ts)</inputVideoFileFilter>
+            <inputVideoFolder>C:/rgbEditor/rgbVideoEditor/inputVideos/game0</inputVideoFolder>
+            <videoFiles>
+                <video>sample1.mp4</video>
+                <video>sample2.mp4</video>
+            </videoFiles>
+            <mp3File>C:/rgbEditor/rgbVideoEditor/mp3/Battle_of_The_Lifetime_Ambient_Trance.mp3</mp3File>
+        </game>
+    </games>
+    <output>
+        <headerVidoeFilePath>noFile</headerVidoeFilePath>
+        <insertingVidoeFilePath>noFile</insertingVidoeFilePath>
+        <originalAudioIntensity>1</originalAudioIntensity>
+        <outputVideoFolder>C:/rgbEditor/rgbVideoEditor/outputVideos</outputVideoFolder>
+        <highlightSegmentLengthInSec>15</highlightSegmentLengthInSec>
+        <minApplausingTimeSec>2</minApplausingTimeSec>
+        <minSegmentTimeSec>5</minSegmentTimeSec>
+        <isRenderTeamInfo>1</isRenderTeamInfo>
+    </output>
+    <log>
+        <isDumpLog>1</isDumpLog>
+        <isShowLogInConsole>1</isShowLogInConsole>
+        <isDumpSelectedRawAudio>0</isDumpSelectedRawAudio>
+        <logFolder>C:/rgbEditor/rgbVideoEditor/log</logFolder>
+        <projProfileFolder>C:/rgbEditor/rgbVideoEditor/log/decodedProfiles</projProfileFolder>
+    </log>
+    <gui>
+        <fontSize>8</fontSize>
+        <thumbnailWidth>640</thumbnailWidth>
+        <thumbnailHeight>480</thumbnailHeight>
+        <dispImgWidth>1280</dispImgWidth>
+        <dispImgHeight>720</dispImgHeight>
+        <dispImgWidthInit>1000</dispImgWidthInit>
+        <dispImgHeightInit>200</dispImgHeightInit>
+    </gui>
+    <timeFreqAna>
+        <nFFT>12000</nFFT>
+        <stepSz>2400</stepSz>
+        <winSz>4800</winSz>
+        <nSec4EachRawAppluasing>20</nSec4EachRawAppluasing>
+        <nMaxHotSeg4EachVideoToCut>7</nMaxHotSeg4EachVideoToCut>
+    </timeFreqAna>
+    <dataContainer>
+        <qSize>50</qSize>
+    </dataContainer>
+</cfg>

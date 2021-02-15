@@ -1,12 +1,11 @@
-# AutoVideoCut
-Automatically video highlights/edit based on audio and video cues. Please open
+# RgbEditor
+Tools for editing short videos
 
 https://github.com/shunguang/AutoVideoCut/blob/master/web/zipFiles/rgbVideoEditorUserManual_v1.0.pdf
 
 to see the detailed descriptions of this tool. It covers video/audio decoding/encoing, demuxing/muxing, applause detection by time-freq analysis of audio signal, as well as GUI design, etc.
 
 1. Prerequisite pkgs 
-    - fftw-3.3.5-dll64
     - boost_1_63_0
     - opencv3.2
     - Qt5.9.1

@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/">
+        <file>resource/add_icon.png</file>
+        <file>resource/del_icon.png</file>
+        <file>resource/InitBackgroundImg.png</file>
+
+      <file>resource/cut_long_video_icon.png</file>
+      <file>resource/edit_short_video_icon.png</file>
+      <file>resource/combin_short_videos_icon.png</file>
+
+    </qresource>
+</RCC>

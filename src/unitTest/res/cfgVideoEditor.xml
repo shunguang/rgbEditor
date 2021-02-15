@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cfg>
+  <input>
+    <inputVideoFileFilter>Videos (*.mp4 *.avi *.ts)</inputVideoFileFilter>
+    <inputVideoFolder>C:/rgbEditor/rgbVideoEditor/inputVideos/game0</inputVideoFolder>
+    <videoFiles>
+      <video>sample1.mp4</video>
+      <video>sample2.mp4</video>
+    </videoFiles>
+    <mp3File>C:/rgbEditor/rgbVideoEditor/mp3/Battle_of_The_Lifetime_Ambient_Trance.mp3</mp3File>
+  </input>
+
+  <log>
+    <isDumpLog>1</isDumpLog>
+    <isShowLogInConsole>1</isShowLogInConsole>
+    <isDumpSelectedRawAudio>0</isDumpSelectedRawAudio>
+    <logFolder>C:/rgbEditor/rgbVideoEditor/log</logFolder>
+    <projProfileFolder>C:/rgbEditor/rgbVideoEditor/log/decodedProfiles</projProfileFolder>
+  </log>
+
+  <gui>
+    <fontSize>8</fontSize>
+    <thumbnailWidth>640</thumbnailWidth>
+    <thumbnailHeight>480</thumbnailHeight>
+    <dispImgWidth>1280</dispImgWidth>
+    <dispImgHeight>720</dispImgHeight>
+    <dispImgWidthInit>1000</dispImgWidthInit>
+    <dispImgHeightInit>200</dispImgHeightInit>
+  </gui>
+
+  <dc>
+    <qSize>50</qSize>
+  </dc>
+</cfg>

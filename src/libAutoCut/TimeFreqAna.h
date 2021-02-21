@@ -24,7 +24,7 @@
 #include "libUtil/DataTypes.h"
 #include "libUtil/utilFFT.h"
 #include "libDc/RawFrm.h"
-#include "libDc/AppCfg.h"
+#include "libCfg/AppCfg.h"
 
 #include "libAlg/SmoothingData.h"
 

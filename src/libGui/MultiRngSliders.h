@@ -20,7 +20,7 @@
 #ifndef __MULTI_RNG_SLIDERS__
 #define __MULTI_RNG_SLIDERS__
 
-#include "libUtil/util.h"
+#include "libUtil/libUtil.h"
 #include <QtWidgets/QLabel>
 #include <QtGui/QPainter>
 #include <QtGui/QMouseEvent>

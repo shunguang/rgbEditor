@@ -29,8 +29,8 @@
 #endif
 
 #include "libUtil/util.h"
-#include "libDc/AppCfg.h"
-#include "libDc/DataContainer.h"
+#include "libCfg/AppCfg.h"
+#include "libDc/DcUI.h"
 
 namespace app {
 
@@ -58,7 +58,7 @@ bool isPauseJob();
 
 virtual void endJob() = 0;
 virtual void setCfg( AppCfgPtr  &cfg);
-void setDC(DataContainerPtr &dc);
+void setDC(DcUIPtr &dc);
 
 #if _WITHQT==0
 void startRunThread();
@@ -77,7 +77,7 @@ void run();
 
 protected:
 AppCfgPtr			m_cfg;
-DataContainerPtr	m_dc;
+DcUIPtr	m_dc;
 std::string			m_threadName; //for debugging purpose
 //bool				m_isDumpDispImg;
 //std::string			m_dumpPath;

@@ -1,6 +1,6 @@
 /*
 *-------------------------------------------------------------------
-* DataContainer.cpp
+* DcUI.cpp
 * Copyright(c) 2019, The RgbVideoEditor Author (Shunguang Wu).
 * All Rights Reserved.
 * You may not use this file except in compliance with the License:
@@ -17,80 +17,80 @@
 * limitations under the License.
 *-------------------------------------------------------------------
 */
-#include "DataContainer.h"
+#include "DcUI.h"
 
 using namespace app;
 using namespace std;
 
 
-DataContainer::DataContainer(int qSize)
+DcUI::DcUI(int qSize)
 : m_videoFrmQ( qSize )
 , m_audioFrmQ( qSize )
 , m_dispFrmQ( qSize )
 {
 }
 
-DataContainer::~DataContainer()
+DcUI::~DcUI()
 {
 }
 
-void DataContainer::respReset()
+void DcUI::respReset()
 {
 m_videoFrmQ.clear();
 m_audioFrmQ.clear();
 m_dispFrmQ.clear();
 }
 
-void DataContainer::pushVideoFrm(const RawFrmPtr &f) 
+void DcUI::pushVideoFrm(const RawFrmPtr &f) 
 {
 m_videoFrmQ.push(f);
 }
 
-bool DataContainer::tryPopVideoFrm(RawFrmPtr &f) 
+bool DcUI::tryPopVideoFrm(RawFrmPtr &f) 
 {
 return m_videoFrmQ.try_pop(f);
 }
 
-bool DataContainer::waitPopVideoFrm(RawFrmPtr &f)
+bool DcUI::waitPopVideoFrm(RawFrmPtr &f)
 {
 m_videoFrmQ.wait_and_pop(f);
 return true;
 }
 
-void DataContainer::pushAudioFrm(const RawFrmPtr &f) 
+void DcUI::pushAudioFrm(const RawFrmPtr &f) 
 {
 m_audioFrmQ.push(f);
 }
 
-bool DataContainer::tryPopAudioFrm(RawFrmPtr &f) 
+bool DcUI::tryPopAudioFrm(RawFrmPtr &f) 
 {
 return m_audioFrmQ.try_pop(f);
 }
 
-bool DataContainer::waitPopAudioFrm(RawFrmPtr &f)
+bool DcUI::waitPopAudioFrm(RawFrmPtr &f)
 {
 m_audioFrmQ.wait_and_pop(f);
 return true;
 }
 
-void DataContainer::pushDispFrm(const DispFrmPtr &f)
+void DcUI::pushDispFrm(const DispFrmPtr &f)
 {
 m_dispFrmQ.push(f);
 }
 
-bool DataContainer::tryPopDispFrm(DispFrmPtr &f)
+bool DcUI::tryPopDispFrm(DispFrmPtr &f)
 {
 return m_dispFrmQ.try_pop(f);
 }
 
-bool DataContainer::waitPopDispFrm(DispFrmPtr &f)
+bool DcUI::waitPopDispFrm(DispFrmPtr &f)
 {
 m_dispFrmQ.wait_and_pop(f);
 return true;
 }
 
 
-bool  DataContainer:: rawFrm2DispFrm(const RawFrmPtr &raw, DispFrm &disp)
+bool  DcUI:: rawFrm2DispFrm(const RawFrmPtr &raw, DispFrm &disp)
 {
 if (raw == 0) {
 return false;

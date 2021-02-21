@@ -141,51 +141,31 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="..\..\libRun\Worker.h">
+    <CustomBuild Include="..\..\libRun\RunGuiCombine.h">
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QT_DIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QT_DIR)\include\QtCore" "-I$(QT_DIR)\include\QtGui" "-I$(QT_DIR)\include\QtWidgets"</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QT_DIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QT_DIR)\include\QtCore" "-I$(QT_DIR)\include\QtGui" "-I$(QT_DIR)\include\QtWidgets"</Command>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\moc_%(Filename).cpp</Outputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\moc_%(Filename).cpp</Outputs>
     </CustomBuild>
-    <CustomBuild Include="..\..\libRun\RunMgr.h">
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QT_DIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QT_DIR)\include\QtCore" "-I$(QT_DIR)\include\QtGui" "-I$(QT_DIR)\include\QtWidgets"</Command>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QT_DIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QT_DIR)\include\QtCore" "-I$(QT_DIR)\include\QtGui" "-I$(QT_DIR)\include\QtWidgets"</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\moc_%(Filename).cpp</Outputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\moc_%(Filename).cpp</Outputs>
-    </CustomBuild>
-    <CustomBuild Include="..\..\libRun\RunBrowseVideo.h">
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QT_DIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QT_DIR)\include\QtCore" "-I$(QT_DIR)\include\QtGui" "-I$(QT_DIR)\include\QtWidgets"</Command>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QT_DIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QT_DIR)\include\QtCore" "-I$(QT_DIR)\include\QtGui" "-I$(QT_DIR)\include\QtWidgets"</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\moc_%(Filename).cpp</Outputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\moc_%(Filename).cpp</Outputs>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Performing Custom Build Tools in  moc_%(Filename).cpp</Message>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Performing Custom Build Tools in  moc_%(Filename).cpp</Message>
-    </CustomBuild>
-    <CustomBuild Include="..\..\libRun\RunAppGui.h">
+    <ClInclude Include="..\..\libRun\RunGuiDc.h" />
+    <CustomBuild Include="..\..\libRun\RunGuiMain.h">
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QT_DIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QT_DIR)\include\QtCore" "-I$(QT_DIR)\include\QtGui" "-I$(QT_DIR)\include\QtWidgets"</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QT_DIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QT_DIR)\include\QtCore" "-I$(QT_DIR)\include\QtGui" "-I$(QT_DIR)\include\QtWidgets"</Command>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\moc_%(Filename).cpp</Outputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\moc_%(Filename).cpp</Outputs>
     </CustomBuild>
     <ClInclude Include="..\..\libRun\RunDefs.h" />
-    <CustomBuild Include="..\..\libRun\RunThread.h">
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QT_DIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QT_DIR)\include\QtCore" "-I$(QT_DIR)\include\QtGui" "-I$(QT_DIR)\include\QtWidgets"</Command>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QT_DIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QT_DIR)\include\QtCore" "-I$(QT_DIR)\include\QtGui" "-I$(QT_DIR)\include\QtWidgets"</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\moc_%(Filename).cpp</Outputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\moc_%(Filename).cpp</Outputs>
-    </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\libRun\RunAppGui.cpp" />
-    <ClCompile Include="..\..\libRun\Worker.cpp" />
-    <ClCompile Include="..\..\libRun\RunBrowseVideo.cpp" />
-    <ClCompile Include="..\..\libRun\RunMgr.cpp" />
-    <ClCompile Include="..\..\libRun\RunThread.cpp" />
-    <ClCompile Include="GeneratedFiles\moc_RunAppGui.cpp" />
-    <ClCompile Include="GeneratedFiles\moc_RunBrowseVideo.cpp" />
-    <ClCompile Include="GeneratedFiles\moc_RunMgr.cpp" />
-    <ClCompile Include="GeneratedFiles\moc_RunThread.cpp" />
-    <ClCompile Include="GeneratedFiles\moc_Worker.cpp" />
+    <ClCompile Include="..\..\libRun\RunAppGui_old.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\libRun\RunGuiDc.cpp" />
+    <ClCompile Include="..\..\libRun\RunGuiMain.cpp" />
+    <ClCompile Include="..\..\libRun\RunGuiCombine.cpp" />
+    <ClCompile Include="GeneratedFiles\moc_RunGuiCombine.cpp" />
+    <ClCompile Include="GeneratedFiles\moc_RunGuiMain.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

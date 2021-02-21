@@ -31,6 +31,11 @@ using namespace app;
 
 CfgInput::CfgInput()
 	: CfgBase()
+	, inputVideoFolder("")
+	, inputVideoFileFilter("")
+	, vInputVideoFileNames()
+	, mp3File("")
+	, mp3Percentage(0)
 {
 }
 
@@ -50,6 +55,7 @@ void CfgInput::fromPropertyTree(const boost::property_tree::ptree &pt)
 		vInputVideoFileNames.push_back(fpath);
 	}
 	mp3File = pt.get<std::string>("mp3File");
+	mp3Percentage = pt.get<int>("mp3Percentage");
 
 }
 
@@ -63,6 +69,7 @@ boost::property_tree::ptree CfgInput::toPropertyTree()
 		pt.add("videoFiles.video", fp);
 	}
 	pt.put("mp3File", mp3File);
+	pt.put("mp3Percentage", mp3Percentage);
 
 	return pt;
 }

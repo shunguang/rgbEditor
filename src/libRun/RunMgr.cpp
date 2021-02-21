@@ -393,7 +393,7 @@ return flag;
 bool   RunMgr::getFirstFrm2Disp(const int fileId, DispFrm &disp)
 {
 const RawFrmPtr &originalFrm  = m_vWorkers[fileId]->m_dexAlg->m_firstVideoFrm;
-return DataContainer::rawFrm2DispFrm(originalFrm, disp);
+return DcUI::rawFrm2DispFrm(originalFrm, disp);
 }
 
 //random access video

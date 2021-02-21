@@ -149,7 +149,7 @@
     <ClInclude Include="..\..\libUtil\DataTypes.h" />
     <ClInclude Include="..\..\libUtil\FileUtil.h" />
     <ClInclude Include="..\..\libUtil\Roi.h" />
-    <ClInclude Include="..\..\libUtil\util.h" />
+    <ClInclude Include="..\..\libUtil\libUtil.h" />
     <ClInclude Include="..\..\libUtil\UtilDefs.h" />
     <ClInclude Include="..\..\libUtil\utilFFT.h" />
     <ClInclude Include="..\..\libUtil\UtilFuncs.h" />

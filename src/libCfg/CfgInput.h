@@ -45,6 +45,7 @@ namespace app {
 		std::string					inputVideoFileFilter;
 		std::vector<std::string>	vInputVideoFileNames;
 		std::string					mp3File;
+		int							mp3Percentage;
 	};
 	typedef std::shared_ptr<CfgInput>		CfgInputPtr;
 }

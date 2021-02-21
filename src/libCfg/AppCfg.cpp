@@ -24,12 +24,12 @@ using namespace app;
 
 AppCfg::AppCfg()
 	: m_toolbarTaskId(-1)       //must be set as -1, see APP_TOOLBAR_UNKN def in GuiUtil.h
-	, m_demux(0)
-	, m_input(0)
-	, m_output(0)
-	, m_gui(0)
-	, m_log(0)
-	//, m_imgRender(0)
+	, m_demux( new CfgDemuxingDecoding() )
+	, m_input( new CfgInput() )
+	, m_output(new CfgOutput())
+	, m_gui(new CfgGui() )
+	, m_log(new CfgLog())
+	, m_dc(new CfgDc())
 {
 }
 
@@ -77,6 +77,9 @@ void AppCfg::fromPropertyTree(const boost::property_tree::ptree &pt0)
 	pt = pt0.get_child("gui");
 	m_gui->fromPropertyTree(pt);
 
+	pt = pt0.get_child("dc");
+	m_dc->fromPropertyTree(pt);
+
 	pt = pt0.get_child("log");
 	m_log->fromPropertyTree(pt);
 }
@@ -88,14 +91,16 @@ boost::property_tree::ptree AppCfg::toPropertyTree()
 	boost::property_tree::ptree pt2 = m_input->toPropertyTree();
 	boost::property_tree::ptree pt3 = m_output->toPropertyTree();
 	boost::property_tree::ptree pt4 = m_gui->toPropertyTree();
-	boost::property_tree::ptree pt5 = m_log->toPropertyTree();
+	boost::property_tree::ptree pt5 = m_dc->toPropertyTree();
+	boost::property_tree::ptree pt6 = m_log->toPropertyTree();
 
 	boost::property_tree::ptree pt;
 	pt.add_child("cfg.demux",	pt1);
 	pt.add_child("cfg.input",	pt2);
 	pt.add_child("cfg.output",	pt3);
 	pt.add_child("cfg.gui",		pt4);
-	pt.add_child("cfg.log",		pt5);
+	pt.add_child("cfg.dc",		pt5);
+	pt.add_child("cfg.log",		pt6);
 
 	return pt;
 }

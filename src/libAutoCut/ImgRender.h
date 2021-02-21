@@ -23,7 +23,7 @@
 
 #include "libUtil/DataTypes.h"
 #include "libUtil/AppLog.h"
-#include "libDc/AppCfg.h"
+#include "libCfg/AppCfg.h"
 
 namespace app {
 	class ImgRender {

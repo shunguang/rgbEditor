@@ -28,7 +28,7 @@
 #include "libUtil/UtilFuncs.h"
 #include <QtCore/QCoreApplication>
 
-int test_xVideoEditor(int argc, char **argv);
+int test_rgbEditor(int argc, char **argv);
 
 int test_demuxing_decoding(int argc, char **argv);
 int test_muxing_encoding(int argc, char **argv);
@@ -58,7 +58,7 @@ int main(int argc, char* argv[])
 	//x = test_audio_fmt_convert( argc, argv);
 
 #else	
-	x = test_xVideoEditor(argc, argv);
+	x = test_rgbEditor(argc, argv);
 	//x = test_draw_rect(argc, argv);
 #endif
 

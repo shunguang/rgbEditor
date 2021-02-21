@@ -41,9 +41,6 @@
     <ClInclude Include="..\..\libCfg\AppCfg.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\libCfg\CfgUtil.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\libCfg\CfgBase.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -63,6 +60,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\libCfg\CfgGui.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libCfg\CfgDc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libCfg\CfgRenderImg.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

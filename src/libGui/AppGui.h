@@ -22,7 +22,7 @@
 #define __APP_GUI_H__
 
 
-#include "libDc/AppCfg.h"
+#include "libCfg/AppCfg.h"
 #include "libUtil/UtilFuncs.h"
 #include "GuiUtil.h"
 #include "MsgBox.h"
@@ -66,7 +66,7 @@ namespace app {
 		QAction		*m_actionExit;
 		QAction		*m_actionHelp;
 		QAction		*m_actionAbout;
-		QAction		*m_vToolbarAction[APP_TOOLBAR_ITEM_CNT];          //cut large videos to small files to edit
+		QAction		*m_vToolbarAction[APP_TOOLBAR_ITEM_CNT];
 
 	protected:
 		QMainWindow *m_mainWin;
@@ -88,10 +88,8 @@ namespace app {
 	protected:
 		AppCfgPtr	m_cfg;
 		bool		m_isShowDebugMsg;
-		int			m_dispImgW, m_dispImgH;
-		int			m_dispImgWInit, m_dispImgHInit;
-
 	};
+	typedef std::shared_ptr<AppGui>		AppGuiPtr;
 }
 
 #endif // UI_SATGUI_H

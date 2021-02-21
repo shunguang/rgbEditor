@@ -1,6 +1,6 @@
 /*
 *-------------------------------------------------------------------
-* CfgUtil.h
+* CfgRenderImg.h
 * Copyright(c) 2019, The RgbVideoEditor Author (Shunguang Wu).
 * All Rights Reserved.
 * You may not use this file except in compliance with the License:
@@ -18,13 +18,10 @@
 *-------------------------------------------------------------------
 */
 
-#ifndef __CFG_UTIL_H__
-#define __CFG_UTIL_H__
+#ifndef __CFG_RENDER_IMG_H__
+#define __CFG_RENDER_IMG_H__
 
-#include "libUtil/DataTypes.h"
-#include "libUtil/AppEnums.h"
-#include "libUtil/AppLog.h"
-
+#include "libUtil/libUtil.h"
 namespace app {
 	struct CfgRenderImg {
 		CfgRenderImg()
@@ -54,12 +51,5 @@ namespace app {
 		cv::Scalar				fontColor;
 	};
 	typedef std::shared_ptr<CfgRenderImg>		CfgRenderImgPtr;
-
-	//cfg for DataContainer
-	struct  CfgDc {
-		CfgDc() : qSize(10) {};
-		int		qSize;
-	};
-	typedef std::shared_ptr<CfgDc>		CfgDcPtr;
 }
 #endif

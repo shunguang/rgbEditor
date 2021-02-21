@@ -85,3 +85,22 @@ void ToolbarCombine::createWidgets()
 	m_out.reset(new OutputGrp(m_grpBoxOut) );
 	m_out->createWidgets();
 }
+
+void ToolbarCombine::initSettings(AppCfgPtr &cfg)
+{
+	CfgInput x = cfg->getInput();
+	//QLabel      *m_vLabel[COMBINE_IN_LABEL_CNT];
+	//QLineEdit	*m_vLineEdit[COMBINE_IN_LEDIT_CNT];
+	//QPushButton *m_vPushBotton[COMBINE_IN_PBUTTON_CNT];
+	if (x.inputVideoFolder.length() > 0)
+		m_in->m_vLineEdit[COMBINE_IN_LEDIT_INPUT_FOLDER]->setText(QString::fromStdString(x.inputVideoFolder));
+
+	if (x.mp3File.length() > 0)
+		m_in->m_vLineEdit[COMBINE_IN_LEDIT_MP3_PATH]->setText(QString::fromStdString(x.mp3File));
+
+	m_in->m_sliderMp3->setValue( x.mp3Percentage );
+	m_in->m_vLabel[COMBINE_IN_LABEL_SLIDER_CUR]->setText(QString::number(x.mp3Percentage));
+
+	//QTableWidget *m_inputFileTable;
+
+}

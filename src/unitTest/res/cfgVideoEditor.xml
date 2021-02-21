@@ -8,15 +8,12 @@
       <video>sample2.mp4</video>
     </videoFiles>
     <mp3File>C:/rgbEditor/rgbVideoEditor/mp3/Battle_of_The_Lifetime_Ambient_Trance.mp3</mp3File>
+    <mp3Percentage>50</mp3Percentage>
   </input>
 
-  <log>
-    <isDumpLog>1</isDumpLog>
-    <isShowLogInConsole>1</isShowLogInConsole>
-    <isDumpSelectedRawAudio>0</isDumpSelectedRawAudio>
-    <logFolder>C:/rgbEditor/rgbVideoEditor/log</logFolder>
-    <projProfileFolder>C:/rgbEditor/rgbVideoEditor/log/decodedProfiles</projProfileFolder>
-  </log>
+  <output>
+    <abc>100</abc>
+  </output>
 
   <gui>
     <fontSize>8</fontSize>
@@ -31,4 +28,13 @@
   <dc>
     <qSize>50</qSize>
   </dc>
+
+  <log>
+    <isDumpLog>1</isDumpLog>
+    <isShowLogInConsole>1</isShowLogInConsole>
+    <isDumpSelectedRawAudio>0</isDumpSelectedRawAudio>
+    <logFolder>C:/rgbEditor/rgbVideoEditor/log</logFolder>
+    <projProfileFolder>C:/rgbEditor/rgbVideoEditor/log/decodedProfiles</projProfileFolder>
+  </log>
+
 </cfg>

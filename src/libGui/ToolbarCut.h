@@ -40,6 +40,8 @@ namespace app {
 		virtual void retranslateUI();
 		virtual void createWidgets();
 		virtual void resizeUI(const bool isInit);
+		virtual void initSettings(AppCfgPtr &cfg) {}
+
 	protected:
 		virtual void calToolbarRects(const bool isInit);
 

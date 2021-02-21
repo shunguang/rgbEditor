@@ -41,9 +41,9 @@ boost::property_tree::ptree CfgOutput::toPropertyTree()
 
 void CfgOutput::fromPropertyTree(const boost::property_tree::ptree &pt)
 {
+#if 0
 	 headerVidoeFilePath = pt.get<std::string>("headerVidoeFilePath");
 	 highlightSegmentLengthInSec = pt.get<float>("highlightSegmentLengthInSec");
-	 minApplausingTimeSec = pt.get<float>("minApplausingTimeSec");
 	 minSegmentTimeSec = pt.get<float>("minSegmentTimeSec");
 	 insertingVidoeFilePath = pt.get<std::string>("insertingVidoeFilePath");
 	 originalAudioIntensity = pt.get<float>("originalAudioIntensity");
@@ -85,4 +85,5 @@ void CfgOutput::fromPropertyTree(const boost::property_tree::ptree &pt)
 	 vUploadPlatforms.push_back("Twitter");
 	 vUploadPlatforms.push_back("Instagram");
 	 vUploadPlatforms.push_back("Youku");
+#endif
 }

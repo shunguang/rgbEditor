@@ -1,19 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="..\..\libDc\DataContainer.cpp" />
     <ClCompile Include="..\..\libDc\DispFrm.cpp" />
     <ClCompile Include="..\..\libDc\RawFrm.cpp" />
     <ClCompile Include="..\..\libDc\RawFrmFileIo.cpp" />
+    <ClCompile Include="..\..\libDc\DcUI.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\libDc\CfgUtil.h" />
-    <ClInclude Include="..\..\libDc\DataContainer.h" />
     <ClInclude Include="..\..\libDc\DispFrm.h" />
     <ClInclude Include="..\..\libDc\FifoQue.h" />
     <ClInclude Include="..\..\libDc\RawFrm.h" />
     <ClInclude Include="..\..\libDc\RawFrmFileIo.h" />
-    <ClInclude Include="..\..\libDc\dc.h" />
     <ClInclude Include="..\..\libDc\DcDefs.h" />
+    <ClInclude Include="..\..\libDc\libDc.h" />
+    <ClInclude Include="..\..\libDc\DcUI.h" />
   </ItemGroup>
 </Project>

@@ -20,8 +20,8 @@
 
 #ifndef __INPUT_4_COMBINE_H__
 #define __INPUT_4_COMBINE_H__
-#include "libDc/AppCfg.h"
-#include "libUtil/util.h"
+#include "libCfg/AppCfg.h"
+#include "libUtil/libUtil.h"
 #include "GuiUtil.h"
 #include "AppSlider.h"
 namespace app {
@@ -66,10 +66,21 @@ namespace app {
 		virtual void createWidgets();
 		virtual void resizeUI();
 
+		void getCurrentInputVideoFileName(int &idx, std::string &fname);
+		void getInputVideoFiles(std::vector<std::string> &vFileNames);
+		void appendAllInputVideos(const std::vector<std::string> &vFileNames);
+		std::string  appendOneInputVideo(const std::string  &fileName);
+		void removeAllInputVideos();
+		void removeOneInputVideo(const int idx);
+		void moveUpOrDown( const int step );
+		void enableDisableButtons();
 	protected:
 		void resetRectToZeros();
 		void calRectsOut();
 		void setTextOut(const int languageId);
+
+		QList<QTableWidgetItem*> takeRow(int row);
+		void setRow(int row, const QList<QTableWidgetItem*>& rowItems);
 
 	public:
 		QGroupBox	*m_grpBoxParent;

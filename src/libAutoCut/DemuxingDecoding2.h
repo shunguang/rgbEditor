@@ -42,7 +42,7 @@ extern "C" {
 #include "libUtil/DataTypes.h"
 #include "libDc/RawFrm.h"
 #include "libUtil/AppLog.h"
-#include "libDc/AppCfg.h"
+#include "libCfg/AppCfg.h"
 
 #include "avUtils.h"
 

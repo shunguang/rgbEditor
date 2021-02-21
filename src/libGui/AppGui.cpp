@@ -53,8 +53,6 @@ AppGui::AppGui()
 void AppGui::setupUi(QMainWindow *mainWin, AppCfgPtr &cfg_)
 {
 	m_cfg = cfg_;
-	m_cfg->getDispImgSizeInit(m_dispImgWInit, m_dispImgHInit);
-	m_cfg->getDispImgSize(m_dispImgW, m_dispImgH);
 	//m_isShowDebugMsg = m_cfg->getShowDebugMsg();
 
 	m_mainWin = mainWin;
@@ -96,7 +94,7 @@ void AppGui::switchToolbarTaskTo(const AppToolbarTask newTaskId )
 	else {
 		enableToolBarItems(false);
 		m_vToolbarAction[newTaskId]->setChecked(true);
-		m_vToolbarGui[newTaskId]->m_startTaskButton->setEnabled(false);
+		m_vToolbarGui[newTaskId]->m_startTaskButton->setEnabled(true);
 		m_vToolbarGui[newTaskId]->m_quitTaskButton->setEnabled(true);
 	}
 	initSettings();
@@ -171,7 +169,10 @@ void AppGui::retranslateUI(QMainWindow *MainWindow)
 void AppGui::initSettings()
 {
 	showImg(m_vPixmap[APP_PIXMAP_INIT_BKG]);
-	//showImg(m_vPixmap[APP_PIXMAP_INIT_BKG].scaled(m_dispImgWInit, m_dispImgHInit, Qt::IgnoreAspectRatio));
+	
+	for (int i = 0; i < APP_TOOLBAR_ITEM_CNT; ++i) {
+		m_vToolbarGui[i]->initSettings( m_cfg );
+	}
 }
 
 void AppGui::setupMenu(QMainWindow *mainWin)
@@ -311,6 +312,8 @@ void AppGui::showImg(const QPixmap &x)
 
 void AppGui::calRects(const bool isInit)
 {
+	CfgGui gui =  m_cfg->getGui();
+
 	//acquire image size
 	const int b = APP_GUI_BORDER_SIZE;		//border size inside box
 	const int b2 = 2 * b;
@@ -323,17 +326,17 @@ void AppGui::calRects(const bool isInit)
 	//acquire main img window size
 	const AppToolbarTask t = (AppToolbarTask)m_cfg->getTask();
 	if (isInit) {
-		imgWinW = m_dispImgWInit;
-		imgWinH = m_dispImgHInit;
+		imgWinW = gui.dispImgWidthInit;
+		imgWinH = gui.dispImgHeightInit;
 	}
 	else{
 		if ( t == APP_TOOLBAR_CUT) {
-			imgWinW = m_dispImgWInit;
-			imgWinH = m_dispImgHInit;
+			imgWinW = gui.dispImgWidthInit;
+			imgWinH = gui.dispImgHeightInit;
 		}
 		else {
-			imgWinW = m_dispImgW;
-			imgWinH = m_dispImgH;
+			imgWinW = gui.dispImgWidth;
+			imgWinH = gui.dispImgHeight;
 		}
 	}
 	for (QRect &r : m_vGrpBoxRect) {

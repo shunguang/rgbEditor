@@ -52,6 +52,8 @@ void Input4Combine::createWidgets()
 	}
 
 	m_sliderMp3 = new QSlider(Qt::Horizontal, m_grpBoxParent);
+	m_sliderMp3->setRange(0, 100);
+	m_sliderMp3->setTickInterval(10);
 
 	m_inputFileTable = new QTableWidget(0, 1, m_grpBoxParent);
 	m_inputFileTable->setObjectName(QStringLiteral("tableFiles"));
@@ -185,7 +187,7 @@ void Input4Combine::setTextOut(const int languageId)
 	m_vTextButton[COMBINE_IN_PBUTTON_BROWSE_MP3_FILE] = "Browse";
 	m_vTextButton[COMBINE_IN_PBUTTON_LOAD_ALL] = "Load All";
 	m_vTextButton[COMBINE_IN_PBUTTON_REMOVE_ALL] = "Remove All";
-	m_vTextButton[COMBINE_IN_PBUTTON_APPEND_ONE] = "Add One";
+	m_vTextButton[COMBINE_IN_PBUTTON_APPEND_ONE] = "Append One";
 	m_vTextButton[COMBINE_IN_PBUTTON_REMOVE_ONE] = "Remove One";
 	m_vTextButton[COMBINE_IN_PBUTTON_UP] = "Move Up";
 	m_vTextButton[COMBINE_IN_PBUTTON_DOWN] = "Move Down";
@@ -212,3 +214,135 @@ void Input4Combine::resetRectToZeros()
 	}
 }
 
+
+void Input4Combine::getInputVideoFiles(std::vector<std::string> &vFileNames)
+{
+	vFileNames.clear();
+	int n = m_inputFileTable->rowCount();
+	for (int i = 0; i < n; ++i) {
+		const QTableWidgetItem *it = m_inputFileTable->item(i, 0);
+		vFileNames.push_back(it->text().toStdString());
+	}
+}
+
+void Input4Combine::appendAllInputVideos(const std::vector<std::string> &vFileNames)
+{
+	BOOST_FOREACH(const string &f, vFileNames) {
+		appendOneInputVideo(f);
+	}
+	enableDisableButtons();
+}
+
+std::string  Input4Combine::appendOneInputVideo(const std::string  &fileName)
+{
+	QList<QTableWidgetItem *> v = m_inputFileTable->findItems(QString::fromStdString(fileName), Qt::MatchExactly);
+	if (v.size() > 0) {
+		string msg = "file: <" + fileName + "> is already in list!";
+		return msg;
+	}
+
+	int row = m_inputFileTable->rowCount();
+	QTableWidgetItem *fileNameItem = new QTableWidgetItem(QString::fromStdString(fileName));
+	m_inputFileTable->insertRow(row);
+	m_inputFileTable->setItem(row, 0, fileNameItem);
+
+	enableDisableButtons();
+	return "";
+}
+
+void Input4Combine::removeAllInputVideos()
+{
+	while (m_inputFileTable->rowCount() > 0) {
+		removeOneInputVideo(0);
+	}
+	enableDisableButtons();
+}
+
+void Input4Combine::removeOneInputVideo(const int idx)
+{
+	if (idx >= 0 && idx < m_inputFileTable->rowCount()) {
+		m_inputFileTable->removeRow(idx);
+	}
+	enableDisableButtons();
+}
+
+void Input4Combine::getCurrentInputVideoFileName(int &idx, string &fname)
+{
+	idx = -1;
+	fname = "";
+	if (m_inputFileTable->rowCount() == 0) {
+		return;
+	}
+
+	idx = m_inputFileTable->currentRow();
+	QTableWidgetItem* item = m_inputFileTable->currentItem();
+	fname = item->text().toStdString();
+	cout << idx << ", fname=" << fname << endl;
+}
+
+
+//step=-1/1  <----------> move up/down
+void Input4Combine::moveUpOrDown(const int step)
+{
+	const int n = m_inputFileTable->rowCount();
+	if (n < 2) {
+		return;
+	}
+
+	int curIdx;
+	string curFname;
+	getCurrentInputVideoFileName(curIdx, curFname);
+	
+	int newIdx = curIdx + step;
+	if (newIdx < 0) newIdx = n-1;
+	else if (newIdx >= n) newIdx = 0;
+
+	QList<QTableWidgetItem*> curRow = takeRow(curIdx);
+	QList<QTableWidgetItem*> newRow = takeRow(newIdx);
+
+	setRow(curIdx, newRow);
+	setRow(newIdx, curRow);
+	m_inputFileTable->selectRow(newIdx);
+}
+
+
+
+// takes and returns the whole row
+QList<QTableWidgetItem*> Input4Combine::takeRow(int row)
+{
+	QList<QTableWidgetItem*> rowItems;
+	for (int col = 0; col < m_inputFileTable->columnCount(); ++col)
+	{
+		rowItems << m_inputFileTable->takeItem(row, col);
+	}
+	return rowItems;
+}
+
+// sets the whole row
+void Input4Combine::setRow(int row, const QList<QTableWidgetItem*>& rowItems)
+{
+	for (int col = 0; col < m_inputFileTable->columnCount(); ++col)
+	{
+		m_inputFileTable->setItem(row, col, rowItems.at(col));
+	}
+}
+
+void Input4Combine::enableDisableButtons()
+{
+	//enable all
+	for (int i = COMBINE_IN_PBUTTON_LOAD_ALL; i <= COMBINE_IN_PBUTTON_DOWN; ++i) {
+		m_vPushBotton[i]->setEnabled(true);
+	}
+
+	const int n = m_inputFileTable->rowCount();
+	if (n == 0) {
+		m_vPushBotton[COMBINE_IN_PBUTTON_REMOVE_ALL]->setEnabled(false);
+		m_vPushBotton[COMBINE_IN_PBUTTON_REMOVE_ONE]->setEnabled(false);
+		m_vPushBotton[COMBINE_IN_PBUTTON_UP]->setEnabled(false);
+		m_vPushBotton[COMBINE_IN_PBUTTON_DOWN]->setEnabled(false);
+	}
+	else if (n == 1) {
+		m_vPushBotton[COMBINE_IN_PBUTTON_UP]->setEnabled(false);
+		m_vPushBotton[COMBINE_IN_PBUTTON_DOWN]->setEnabled(false);
+	}
+}

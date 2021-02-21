@@ -1,6 +1,6 @@
 /*
 *-------------------------------------------------------------------
-* readVideoUI.h
+* CfgDc.h
 * Copyright(c) 2019, The RgbVideoEditor Author (Shunguang Wu).
 * All Rights Reserved.
 * You may not use this file except in compliance with the License:
@@ -18,20 +18,34 @@
 *-------------------------------------------------------------------
 */
 
-#ifndef __READVIDEO_UI_H__
-#define __READVIDEO_UI_H__
+#ifndef __CFG_DC_H__
+#define __CFG_DC_H__
 
-#include "libUtil/DataTypes.h"
-#include "avUtils.h"
-#include "libDc/RawFrm.h"
-#include "libCfg/AppCfg.h"
-
-#include "libyuv/libyuv.h"
-#include "DemuxingDecoding2.h"
-
+#include "libUtil/libUtil.h"
+#include "CfgBase.h"
 namespace app {
-	//using  av_seek_frame(), then read video/audio codec ctx info, then rewind the file and beging
-	void getVideoInfo(const char *filePath, MyVideoStreamInfo &vInfo, MyAudioStreamInfo	&aInfo);
-	void readVideo(const char *filePath, const bool readVideo, const bool readAudio, int &vdieoFrmW, int &vdieoFrmH, std::vector<RawFrmPtr> &vFrm, std::vector<RawFrmPtr> &aFrm);
+	class  CfgDc : public CfgBase {
+	public:	
+		CfgDc() : qSize(10) {};
+		CfgDc(const CfgDc &x) = default;
+		CfgDc& operator = (const CfgDc &x) = default;
+		virtual ~CfgDc() { CfgBase::~CfgBase(); };
+
+		virtual boost::property_tree::ptree toPropertyTree()
+		{
+			boost::property_tree::ptree pt;
+			pt.put("qSize", qSize);
+			return pt;
+		}
+
+		virtual void fromPropertyTree(const boost::property_tree::ptree &pt)
+		{
+			qSize = 10;
+		}
+
+	public:
+		int		qSize;
+	};
+	typedef std::shared_ptr<CfgDc>		CfgDcPtr;
 }
 #endif

@@ -77,15 +77,14 @@
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\libDc\DataContainer.cpp" />
+    <ClCompile Include="..\..\libDc\DcUI.cpp" />
     <ClCompile Include="..\..\libDc\DispFrm.cpp" />
     <ClCompile Include="..\..\libDc\RawFrm.cpp" />
     <ClCompile Include="..\..\libDc\RawFrmFileIo.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\libDc\CfgUtil.h" />
-    <ClInclude Include="..\..\libDc\DataContainer.h" />
-    <ClInclude Include="..\..\libDc\dc.h" />
+    <ClInclude Include="..\..\libDc\DcUI.h" />
+    <ClInclude Include="..\..\libDc\libDc.h" />
     <ClInclude Include="..\..\libDc\DcDefs.h" />
     <ClInclude Include="..\..\libDc\DispFrm.h" />
     <ClInclude Include="..\..\libDc\FifoQue.h" />

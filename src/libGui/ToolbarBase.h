@@ -20,7 +20,7 @@
 
 #ifndef __TOOLBAR_BASE_H__
 #define __TOOLBAR_BASE_H__
-#include "libDc/AppCfg.h"
+#include "libCfg/AppCfg.h"
 #include "libUtil/UtilFuncs.h"
 #include "GuiUtil.h"
 
@@ -35,7 +35,7 @@ namespace app {
 		virtual void retranslateUI();
 		virtual void createWidgets();
 		virtual void resizeUI(const bool isInit);
-
+		virtual void initSettings(AppCfgPtr &cfg)=0;
 	protected:
 		virtual void calToolbarRects(const bool isInit);
 		bool		 isActive();

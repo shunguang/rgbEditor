@@ -49,6 +49,8 @@ namespace app {
 		int			 outputVideoFpsIdx;
 		int          uploadPlatformIdx;
 
+		cv::Size	 outputVideoUsrDefSz;
+
 		std::vector<std::string> vOutputVideoFileFmts;
 		std::vector<std::string> vOutputVideoFrmSizes;
 		std::vector<std::string> vOutputVideoFrmRates;
@@ -61,7 +63,6 @@ namespace app {
 		std::string  insertingVidoeFilePath;
 		float32		 originalAudioIntensity;
 		float32      highlightSegmentLengthInSec;         //the video segment in [tEndAppausing-highlightSegmentLengthInSec, tEndAppausing] will be cut
-		float32      minApplausingTimeSec;
 		float32		 minSegmentTimeSec;
 		bool		 isRenderTeamInfo;
 		bool		 showDebugMsg;

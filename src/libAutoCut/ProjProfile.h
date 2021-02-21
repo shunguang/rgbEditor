@@ -21,7 +21,7 @@
 #define __PROJ_PROFILE_H__
 #include "libUtil/UtilFuncs.h"
 #include "libDc/RawFrmFileIo.h"
-#include "libDc/AppCfg.h"
+#include "libCfg/AppCfg.h"
 #include "avUtils.h"
 namespace app {
 class ProjProfile {

@@ -1,6 +1,6 @@
 /*
 *-------------------------------------------------------------------
-* DataContainer.h
+* DcUI.h
 * Copyright(c) 2019, The RgbVideoEditor Author (Shunguang Wu).
 * All Rights Reserved.
 * You may not use this file except in compliance with the License:
@@ -20,16 +20,17 @@
 #ifndef _DATA_CONTAINER_H_
 #define _DATA_CONTAINER_H_
 
+#include "libCfg/AppCfg.h"
+
 #include "DcDefs.h"
 #include "FifoQue.h"
 #include "RawFrm.h"
 #include "DispFrm.h"
-#include "AppCfg.h"
 namespace app {
-	class DC_EXPORT DataContainer {
+	class DC_EXPORT DcUI {
 	public:
-		DataContainer(int qSize = 50);
-		~DataContainer();
+		DcUI(int qSize = 50);
+		~DcUI();
 
 		static bool  rawFrm2DispFrm(const RawFrmPtr &raw, DispFrm &disp);
 
@@ -78,7 +79,7 @@ namespace app {
 		FifoQue<DispFrmPtr>				m_dispFrmQ;
 	};
 
-	typedef std::shared_ptr<DataContainer>		DataContainerPtr;
+	typedef std::shared_ptr<DcUI>		DcUIPtr;
 }
 
 #endif		

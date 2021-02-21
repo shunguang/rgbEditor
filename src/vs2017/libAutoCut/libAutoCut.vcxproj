@@ -143,35 +143,89 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\libAutoCut\AudioDecoding.h" />
-    <ClInclude Include="..\..\libAutoCut\AudioEncoding.h" />
-    <ClInclude Include="..\..\libAutoCut\avUtils.h" />
-    <ClInclude Include="..\..\libAutoCut\DemuxingDecoding2.h" />
-    <ClInclude Include="..\..\libAutoCut\LocateHighlightFrms.h" />
-    <ClInclude Include="..\..\libAutoCut\ImgRender.h" />
-    <ClInclude Include="..\..\libAutoCut\LocateHotSegs.h" />
-    <ClInclude Include="..\..\libAutoCut\MuxingEncoding2.h" />
-    <ClInclude Include="..\..\libAutoCut\OutputStream.h" />
-    <ClInclude Include="..\..\libAutoCut\ProjProfile.h" />
-    <ClInclude Include="..\..\libAutoCut\readVideoUI.h" />
-    <ClInclude Include="..\..\libAutoCut\SpectralFlux.h" />
-    <ClInclude Include="..\..\libAutoCut\TimeFreqAna.h" />
-    <ClInclude Include="..\..\libAutoCut\VideoAnaResult.h" />
-    <ClInclude Include="..\..\libAutoCut\WrtOutputVideo.h" />
+    <ClInclude Include="..\..\libAutoCut\AudioDecoding.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\..\libAutoCut\AudioEncoding.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\..\libAutoCut\avUtils.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\..\libAutoCut\DemuxingDecoding2.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\..\libAutoCut\LocateHighlightFrms.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\..\libAutoCut\ImgRender.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\..\libAutoCut\LocateHotSegs.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\..\libAutoCut\MuxingEncoding2.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\..\libAutoCut\OutputStream.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\..\libAutoCut\ProjProfile.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\..\libAutoCut\readVideoUI.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\..\libAutoCut\SpectralFlux.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\..\libAutoCut\TimeFreqAna.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\..\libAutoCut\VideoAnaResult.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\..\libAutoCut\WrtOutputVideo.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\libAutoCut\AudioDecoding.cpp" />
-    <ClCompile Include="..\..\libAutoCut\AudioEncoding.cpp" />
-    <ClCompile Include="..\..\libAutoCut\avUtils.cpp" />
-    <ClCompile Include="..\..\libAutoCut\DemuxingDecoding2.cpp" />
-    <ClCompile Include="..\..\libAutoCut\LocateHighlightFrms.cpp" />
-    <ClCompile Include="..\..\libAutoCut\ImgRender.cpp" />
-    <ClCompile Include="..\..\libAutoCut\LocateHotSegs.cpp" />
-    <ClCompile Include="..\..\libAutoCut\MuxingEncoding2.cpp" />
-    <ClCompile Include="..\..\libAutoCut\ProjProfile.cpp" />
-    <ClCompile Include="..\..\libAutoCut\readVideoUI.cpp" />
-    <ClCompile Include="..\..\libAutoCut\TimeFreqAna.cpp" />
-    <ClCompile Include="..\..\libAutoCut\WrtOutputVideo.cpp" />
+    <ClCompile Include="..\..\libAutoCut\AudioDecoding.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\libAutoCut\AudioEncoding.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\libAutoCut\avUtils.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\libAutoCut\DemuxingDecoding2.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\libAutoCut\LocateHighlightFrms.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\libAutoCut\ImgRender.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\libAutoCut\LocateHotSegs.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\libAutoCut\MuxingEncoding2.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\libAutoCut\ProjProfile.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\libAutoCut\readVideoUI.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\libAutoCut\TimeFreqAna.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\libAutoCut\WrtOutputVideo.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

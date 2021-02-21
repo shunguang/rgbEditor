@@ -1,6 +1,6 @@
 /*
 *-------------------------------------------------------------------
-* util.h
+* libUtil.h
 * Copyright(c) 2019, The RgbVideoEditor Author (Shunguang Wu).
 * All Rights Reserved.
 * You may not use this file except in compliance with the License:
@@ -17,16 +17,14 @@
 * limitations under the License.
 *-------------------------------------------------------------------
 */
-#ifndef _UTIL_H_
-#define _UTIL_H_
+#ifndef _LIB_DC_H_
+#define _LIB_DC_H_
 
-#include "libUtil/DataTypes.h"
-#include "libUtil/AppEnums.h"
-#include "libUtil/AppLog.h"
-#include "libUtil/UtilFuncs.h"
-#include "libUtil/utilFFT.h"
-#include "libUtil/Roi.h"
-#include "libUtil/CvUtilFuncs.h"
-#include "libUtil/videoSpec.h"
+#include "libCfg/AppCfg.h"
+#include "libDc/DcUI.h"
+#include "libDc/DispFrm.h"
+#include "libDc/FifoQue.h"
+#include "libDc/RawFrm.h"
+#include "libDc/RawFrmFileIo.h"
 
 #endif

@@ -27,7 +27,7 @@
 #ifndef __CFG_BASE_H__
 #define __CFG_BASE_H__
 
-#include "libUtil/util.h"
+#include "libUtil/libUtil.h"
 #include "CfgDefs.h"
 namespace app {
 	class CFG_EXPORT CfgBase {

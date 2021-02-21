@@ -20,8 +20,8 @@
 
 #ifndef __OUTPUT_GRP_H__
 #define __OUTPUT_GRP_H__
-#include "libDc/AppCfg.h"
-#include "libUtil/util.h"
+#include "libCfg/AppCfg.h"
+#include "libUtil/libUtil.h"
 #include "GuiUtil.h"
 
 namespace app {
@@ -73,6 +73,9 @@ namespace app {
 		//set the texts of horizontal, vertical and 1:1 output video size check boxes 
 		void setOutputVideoSizes(std::vector<ImgSize>vH, std::vector<ImgSize>vV, std::vector<ImgSize>v1To1);
 		void setInputVideoSzRation( const ImgSize &sz );
+
+		void updateOutVideoSzCandiates( const int socialMediaIdx );
+
 	protected:
 		void resetRectToZeros();
 		void calRectsOut();

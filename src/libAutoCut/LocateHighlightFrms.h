@@ -26,7 +26,7 @@
 #include "libUtil/DataTypes.h"
 #include "libUtil/UtilFuncs.h"
 #include "libUtil/AppLog.h"
-#include "libDc/AppCfg.h"
+#include "libCfg/AppCfg.h"
 
 #include "avUtils.h"
 #include "TimeFreqAna.h"

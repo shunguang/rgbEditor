@@ -335,5 +335,8 @@ void OutputGrp::setDefaultOutputVideoSizes(const AppSocialMedia_t  type)
 	m_nCheckBoxH=3;
 	m_nCheckBoxV=3;
 	m_nCheckBox1To1=3;
+}
 
+void OutputGrp::updateOutVideoSzCandiates(const int socialMediaIdx)
+{
 }

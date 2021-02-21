@@ -22,14 +22,13 @@
 #ifndef __APP_CFG_H__
 #define __APP_CFG_H__
 
-#include "libUtil/DataTypes.h"
-#include "libUtil/AppLog.h"
-#include "libUtil/UtilFuncs.h"
-#include "CfgUtil.h"
+#include "libUtil/libUtil.h"
 #include "CfgLog.h"
 #include "CfgInput.h"
 #include "CfgOutput.h"
 #include "CfgGui.h"
+#include "CfgDc.h"
+#include "CfgRenderImg.h"
 #include "CfgDemuxingDecoding.h"
 namespace app {
 	//--------------------------------------
@@ -85,6 +84,20 @@ namespace app {
 			*(m_gui.get()) = x;
 		}
 
+		CfgDc getDc() {
+			CfgDc ret;
+			{
+				boost::mutex::scoped_lock lock(m_mutexCfg);
+				ret = *(m_dc.get());
+			}
+			return ret;
+		}
+
+		void setDc(const CfgDc &x) {
+			boost::mutex::scoped_lock lock(m_mutexCfg);
+			*(m_dc.get()) = x;
+		}
+
 		CfgLog getLog() {
 			CfgLog ret;
 			{
@@ -118,9 +131,6 @@ namespace app {
 		virtual boost::property_tree::ptree toPropertyTree();
 		virtual void fromPropertyTree(const boost::property_tree::ptree &pt);
 
-		virtual boost::property_tree::ptree toPropertyTreeTeamInfo();
-		virtual void fromPropertyTreeTeamInfo(const boost::property_tree::ptree &pt);
-
 	public:
 		int						m_toolbarTaskId;
 
@@ -132,7 +142,7 @@ namespace app {
 		CfgLogPtr				m_log;
 
 		//CfgRenderImg        m_imgRender;
-		//CfgDc				m_dc0;            //m_dc is already used, for less confusion in search
+		CfgDcPtr				m_dc;            //m_dc is already used, for less confusion in search
 	private:
 		boost::mutex	m_mutexCfg;
 	};

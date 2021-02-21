@@ -154,13 +154,14 @@
   <ItemGroup>
     <ClInclude Include="..\..\libCfg\AppCfg.h" />
     <ClInclude Include="..\..\libCfg\CfgBase.h" />
+    <ClInclude Include="..\..\libCfg\CfgDc.h" />
     <ClInclude Include="..\..\libCfg\CfgGui.h" />
     <ClInclude Include="..\..\libCfg\CfgInput.h" />
     <ClInclude Include="..\..\libCfg\CfgDefs.h" />
     <ClInclude Include="..\..\libCfg\CfgDemuxingDecoding.h" />
     <ClInclude Include="..\..\libCfg\CfgLog.h" />
     <ClInclude Include="..\..\libCfg\CfgOutput.h" />
-    <ClInclude Include="..\..\libCfg\CfgUtil.h" />
+    <ClInclude Include="..\..\libCfg\CfgRenderImg.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -44,7 +44,7 @@ void RunThread::setCfg(AppCfgPtr &cfg)
 m_cfg = cfg;
 }
 
-void RunThread::setDC(DataContainerPtr &dc )
+void RunThread::setDC(DcUIPtr &dc )
 {
 m_dc = dc;
 }

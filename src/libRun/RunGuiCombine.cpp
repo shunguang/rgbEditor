@@ -210,5 +210,6 @@ void RunGuiCombine::on_lineEdit_outputUserDefineH_edited(const QString &s)
 
 void RunGuiCombine::on_comboBox_outputSocialMedia_currentIndexChanged(const int newIdx)
 {
-	m_outWgts->updateOutVideoSzCandiates( newIdx );
+	const ImgSize inputVideoSz(1920, 1080);
+	m_outWgts->updateOutVideoSzCandiates( newIdx, inputVideoSz);
 }

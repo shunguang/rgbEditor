@@ -22,7 +22,6 @@ using namespace app;
 using namespace std;
 OutputGrp::OutputGrp(QGroupBox *parentGrp)
 	: m_grpBoxParent(parentGrp)
-	, m_smDefaultType(APP_SM_YOUTUBE)
 	, m_smCurrType(APP_SM_YOUTUBE)
 	, m_inputVideoImgDim(1920, 1080)
 	, m_inputVideoImgRatio(1.7)
@@ -39,7 +38,9 @@ OutputGrp::OutputGrp(QGroupBox *parentGrp)
 	m_vOutputVideoFps.push_back("10");
 	m_vOutputVideoFps.push_back("30");
 
-	setDefaultOutputVideoSizes(m_smDefaultType);
+	m_videoSpec.reset(new VideoSpec(m_smCurrType));
+	setOutputVideoSizes();
+
 }
 
 OutputGrp::~OutputGrp()
@@ -109,14 +110,15 @@ void OutputGrp::retranslateUI()
 	for (int i = 0; i < OUT_PBUTTON_CNT; ++i) {
 		m_vPushBottonOut[i]->setText(QString::fromStdString(m_vTextButtonOut[i]));
 	}
-	retranslateUI2(m_smDefaultType);
+	retranslateUI2();
 
 	m_grpBoxParent->setTitle(QString::fromStdString(m_textGrpBoxTitle));
 
 }
 
-void OutputGrp::retranslateUI2(const AppSocialMedia_t  type )
+void OutputGrp::retranslateUI2()
 {
+	appAssert( m_smCurrType >= 0 && m_smCurrType < APP_SM_CNT, "m_smCurrType out of order!");
 	for (int i = 0; i < m_nCheckBoxH; ++i) {
 		m_vCheckBoxHorizontalSzOut[i]->setText(QString::fromStdString(m_vTextCheckBoxH[i]) );
 	}
@@ -132,7 +134,7 @@ void OutputGrp::retranslateUI2(const AppSocialMedia_t  type )
 	for (const string &s : m_vSocailMediaType) {
 		p->addItem(QString::fromStdString(s));
 	}
-	p->setCurrentText(QString::fromStdString(m_vSocailMediaType[0]));
+	p->setCurrentText(QString::fromStdString(m_vSocailMediaType[m_smCurrType]));
 	p->setEnabled(true);
 
 	//set video fmt comboboxes
@@ -312,7 +314,7 @@ void OutputGrp::resetRectToZeros()
 	}
 }
 
-void OutputGrp::setDefaultOutputVideoSizes(const AppSocialMedia_t  type)
+void OutputGrp::setOutputVideoSizes()
 {
 	for (int i = 0; i < APP_MAX_VIDEO_SZ_ITEMS; ++i) {
 		m_vTextCheckBoxV[i] = "";
@@ -320,23 +322,22 @@ void OutputGrp::setDefaultOutputVideoSizes(const AppSocialMedia_t  type)
 		m_vTextCheckBox1To1[i] = "";
 	}
 
-	m_vTextCheckBoxH[0]		= "1920 x 1080";
-	m_vTextCheckBoxH[1]		= "720x640";
-	m_vTextCheckBoxH[2] 	= "640x480";
+	const int nItemsToShow = std::min<int>(3, APP_MAX_VIDEO_SZ_ITEMS);
+	for (int i = 0; i < nItemsToShow; ++i) {
+		m_vTextCheckBoxH[i] = m_videoSpec->vImgSzHorizontalVideos[i].toString();
+		m_vTextCheckBoxV[i] = m_videoSpec->vImgSzVerticalVideos[i].toString();
+		m_vTextCheckBox1To1[i] = m_videoSpec->vImgSz1To1Videos[i].toString();
+	}
 
-	m_vTextCheckBoxV[0] = "1080 x 1920";
-	m_vTextCheckBoxV[1] = "640 x 720";
-	m_vTextCheckBoxV[2] = "480 x 640";
-
-	m_vTextCheckBox1To1[0] = "1080 x 1080";
-	m_vTextCheckBox1To1[1] = "640 x 640";
-	m_vTextCheckBox1To1[2] = "480 x 480";
-
-	m_nCheckBoxH=3;
-	m_nCheckBoxV=3;
-	m_nCheckBox1To1=3;
+	m_nCheckBoxH= nItemsToShow;
+	m_nCheckBoxV= nItemsToShow;
+	m_nCheckBox1To1= nItemsToShow;
 }
 
-void OutputGrp::updateOutVideoSzCandiates(const int socialMediaIdx)
+void OutputGrp::updateOutVideoSzCandiates(const int socialMediaIdx, const ImgSize &inputVideoSz)
 {
+	m_smCurrType = (AppSocialMedia_t)socialMediaIdx;
+	m_videoSpec->reset(m_smCurrType, inputVideoSz.w, inputVideoSz.h);
+	setOutputVideoSizes();
+	retranslateUI2();
 }

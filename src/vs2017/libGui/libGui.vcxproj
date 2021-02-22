@@ -153,6 +153,7 @@
     <ClCompile Include="..\..\libGui\ToolbarCombine.cpp" />
     <ClCompile Include="..\..\libGui\ToolbarCut.cpp" />
     <ClCompile Include="..\..\libGui\ToolbarEdit.cpp" />
+    <ClCompile Include="..\..\libGui\VideoSpec.cpp" />
     <ClCompile Include="GeneratedFiles\moc_ImgLabel.cpp" />
     <ClCompile Include="GeneratedFiles\moc_MsgBox.cpp" />
     <ClCompile Include="GeneratedFiles\moc_MultiRngSliders.cpp" />
@@ -171,6 +172,7 @@
     <ClInclude Include="..\..\libGui\ToolbarCombine.h" />
     <ClInclude Include="..\..\libGui\ToolbarCut.h" />
     <ClInclude Include="..\..\libGui\ToolbarEdit.h" />
+    <ClInclude Include="..\..\libGui\VideoSpec.h" />
     <CustomBuild Include="..\..\libGui\MultiRngSliders.h">
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\moc_%(Filename).cpp</Outputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\moc_%(Filename).cpp</Outputs>

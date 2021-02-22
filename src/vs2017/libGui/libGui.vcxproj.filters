@@ -75,6 +75,9 @@
     <ClCompile Include="..\..\libGui\Input4Combine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\libGui\VideoSpec.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\libGui\GuiDefs.h">
@@ -108,6 +111,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\libGui\AppSlider.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libGui\VideoSpec.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

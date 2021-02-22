@@ -71,6 +71,11 @@ namespace app {
 			return sz;
 		}
 
+		std::string toString() {
+			std::string s = std::to_string(w) + " x " + std::to_string(h);
+			return s;
+		}
+
 		int w;
 		int h;
 	};

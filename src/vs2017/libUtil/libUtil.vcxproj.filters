@@ -45,9 +45,6 @@
     <ClInclude Include="..\..\libUtil\FileUtil.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\libUtil\VideoSpec.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\libUtil\libUtil.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -66,9 +63,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\libUtil\FileUtil.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\libUtil\VideoSpec.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

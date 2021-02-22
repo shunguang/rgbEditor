@@ -23,6 +23,7 @@
 #include "libCfg/AppCfg.h"
 #include "libUtil/libUtil.h"
 #include "GuiUtil.h"
+#include "videoSpec.h"
 
 namespace app {
 	enum OutPushButton {
@@ -74,14 +75,14 @@ namespace app {
 		void setOutputVideoSizes(std::vector<ImgSize>vH, std::vector<ImgSize>vV, std::vector<ImgSize>v1To1);
 		void setInputVideoSzRation( const ImgSize &sz );
 
-		void updateOutVideoSzCandiates( const int socialMediaIdx );
+		void updateOutVideoSzCandiates( const int socialMediaIdx, const ImgSize &inputVideoSz  );
 
 	protected:
 		void resetRectToZeros();
 		void calRectsOut();
 		void setTextOut(const int languageId);
-		void retranslateUI2( const AppSocialMedia_t  type );
-		void setDefaultOutputVideoSizes(const AppSocialMedia_t  type );
+		void retranslateUI2();
+		void setOutputVideoSizes();
 
 	public:
 		QGroupBox	*m_grpBoxParent;
@@ -120,8 +121,7 @@ namespace app {
 		std::vector<std::string> m_vOutputVideoFps;
 
 
-		VideoSpecPtr			 m_vVideoSpec[APP_SM_CNT];
-		AppSocialMedia_t		 m_smDefaultType;			//default SocialMedia type
+		VideoSpecPtr			 m_videoSpec;	//hold all the video sizes for all kind of social medias
 		AppSocialMedia_t		 m_smCurrType;				//current SocialMedia type
 
 		int						 m_nCheckBoxH;

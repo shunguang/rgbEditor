@@ -27,6 +27,4 @@
 #include "libUtil/utilFFT.h"
 #include "libUtil/Roi.h"
 #include "libUtil/CvUtilFuncs.h"
-#include "libUtil/videoSpec.h"
-
 #endif

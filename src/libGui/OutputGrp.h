@@ -72,11 +72,11 @@ namespace app {
 		virtual void resizeUI();
 
 		//set the texts of horizontal, vertical and 1:1 output video size check boxes 
-		void setOutputVideoSizes(std::vector<ImgSize>vH, std::vector<ImgSize>vV, std::vector<ImgSize>v1To1);
-		void setInputVideoSzRation( const ImgSize &sz );
+		//void setOutputVideoSizes(std::vector<ImgSize>vH, std::vector<ImgSize>vV, std::vector<ImgSize>v1To1);
+		//void setInputVideoSzRation( const ImgSize &sz );
 
 		void updateOutVideoSzCandiates( const int socialMediaIdx, const ImgSize &inputVideoSz  );
-
+		void uncheckVideoSizeBoxes();
 	protected:
 		void resetRectToZeros();
 		void calRectsOut();

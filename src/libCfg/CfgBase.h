@@ -30,6 +30,21 @@
 #include "libUtil/libUtil.h"
 #include "CfgDefs.h"
 namespace app {
+	enum AppToolbarTask {
+		APP_TOOLBAR_UNKN = -1,
+		APP_TOOLBAR_CUT = 0,
+		APP_TOOLBAR_EDIT,
+		APP_TOOLBAR_COMBINE,
+		APP_TOOLBAR_ITEM_CNT
+	};
+	static std::vector<std::string> g_AppToolbarTaskName = { "&Cut Video",  "&Edit Video",  "C&ombine Videos", "task unkn" };
+	static std::vector<std::string>	g_AppToolbarStatusTip = {
+		"cut long videos into short ones",
+		"edit short videos",
+		"combine iamges and short videos into long one",
+		"please choose an task"
+	};
+
 	class CFG_EXPORT CfgBase {
 	public:
 		CfgBase();

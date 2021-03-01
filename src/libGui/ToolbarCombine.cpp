@@ -88,7 +88,9 @@ void ToolbarCombine::createWidgets()
 
 void ToolbarCombine::initSettings(AppCfgPtr &cfg)
 {
-	CfgInput x = cfg->getInput();
+	CfgInputCombine x;
+	cfg->getInput(x);
+
 	//QLabel      *m_vLabel[COMBINE_IN_LABEL_CNT];
 	//QLineEdit	*m_vLineEdit[COMBINE_IN_LEDIT_CNT];
 	//QPushButton *m_vPushBotton[COMBINE_IN_PBUTTON_CNT];

@@ -24,8 +24,14 @@
 
 #include "libUtil/libUtil.h"
 #include "CfgLog.h"
-#include "CfgInput.h"
-#include "CfgOutput.h"
+#include "CfgInputCut.h"
+#include "CfgInputEdit.h"
+#include "CfgInputCombine.h"
+
+#include "CfgOutputCut.h"
+#include "CfgOutputEdit.h"
+#include "CfgOutputCombine.h"
+
 #include "CfgGui.h"
 #include "CfgDc.h"
 #include "CfgRenderImg.h"
@@ -41,33 +47,33 @@ namespace app {
 		void writeToFile(const char *fanme);
 		std::string toStr();
 
-		CfgInput getInput() {
-			CfgInput ret;
-			{
-				boost::mutex::scoped_lock lock(m_mutexCfg);
-				ret = *(m_input.get());
-			}
-			return ret;
+		void getInput(CfgInputCut &x);
+		void getInput(CfgInputEdit &x);
+		void getInput(CfgInputCombine &x);
+
+		void setInput(const CfgInputCombine &x) {
+			setInputT<CfgInputCombine>(x);
+		}
+		void setInput(const CfgInputCut &x) {
+			setInputT<CfgInputCut>(x);
+		}
+		void setInput(const CfgInputEdit &x) {
+			setInputT<CfgInputEdit>(x);
 		}
 
-		void setInput( const CfgInput &x) {
-			boost::mutex::scoped_lock lock(m_mutexCfg);
-			*(m_input.get()) = x;
+
+		void getOutput(CfgOutputCut &x);
+		void getOutput(CfgOutputEdit &x);
+		void getOutput(CfgOutputCombine &x);
+
+		void setOutput(const CfgOutputCut &x) {
+			setOutputT<CfgOutputCut>(x);
 		}
-
-
-		CfgOutput getOutput() {
-			CfgOutput ret;
-			{
-				boost::mutex::scoped_lock lock(m_mutexCfg);
-				ret = *(m_output.get());
-			}
-			return ret;
+		void setOutput(const CfgOutputEdit &x) {
+			setOutputT<CfgOutputEdit>(x);
 		}
-
-		void setOutput(const CfgOutput &x) {
-			boost::mutex::scoped_lock lock(m_mutexCfg);
-			*(m_output.get()) = x;
+		void setOutput(const CfgOutputCombine &x) { 
+			setOutputT<CfgOutputCombine>(x); 
 		}
 
 		CfgGui getGui() {
@@ -128,6 +134,22 @@ namespace app {
 
 
 	private:
+		template <class T>
+		void setOutputT(const T &x)
+		{
+			boost::mutex::scoped_lock lock(m_mutexCfg);
+			T *p = dynamic_cast<T *>(m_vOutput[x.toolbarId].get());
+			p->setPrms(x);
+		}
+
+		template <class T>
+		void setInputT(const T &x)
+		{
+			boost::mutex::scoped_lock lock(m_mutexCfg);
+			T *p = dynamic_cast<T *>(m_vInput[x.toolbarId].get());
+			p->setPrms(x);
+		}
+
 		virtual boost::property_tree::ptree toPropertyTree();
 		virtual void fromPropertyTree(const boost::property_tree::ptree &pt);
 
@@ -135,16 +157,19 @@ namespace app {
 		int						m_toolbarTaskId;
 
 		CfgDemuxingDecodingPtr	m_demux;
-		CfgInputPtr				m_input;
-		CfgOutputPtr			m_output;
 		CfgGuiPtr	            m_gui;
-
 		CfgLogPtr				m_log;
-
 		//CfgRenderImg        m_imgRender;
 		CfgDcPtr				m_dc;            //m_dc is already used, for less confusion in search
+
+		CfgInputPtr				m_vInput[APP_TOOLBAR_ITEM_CNT];
+		CfgOutputPtr			m_vOutput[APP_TOOLBAR_ITEM_CNT];
 	private:
 		boost::mutex	m_mutexCfg;
+
+		//do not change, the order is defibned by enum AppToolbarTask{}, which will be used to make xml file filed names
+		//such as <inputCut> ... </inputCut>, <outputCut> ... </outputCut>, <inputEdit> ... </inputEdit> etc
+		const std::vector<std::string>	m_vToobarNames = { "Cut","Edit","Combine" };
 	};
 
 	typedef std::shared_ptr<AppCfg>		AppCfgPtr;

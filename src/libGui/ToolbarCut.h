@@ -40,7 +40,7 @@ namespace app {
 		virtual void retranslateUI();
 		virtual void createWidgets();
 		virtual void resizeUI(const bool isInit);
-		virtual void initSettings(AppCfgPtr &cfg) {}
+		virtual void initSettings(AppCfgPtr &cfg);
 
 	protected:
 		virtual void calToolbarRects(const bool isInit);
@@ -67,6 +67,7 @@ namespace app {
 		//QSlider     *m_vSliderOut[OUT_SLIDER_CNT];
 		//AppSlider	m_vSliderParam[OUT_SLIDER_CNT];
 
+		std::vector<std::string> m_vLineEditInitText;
 	};
 	typedef std::shared_ptr<ToolbarCut>		ToolbarCutPtr;
 

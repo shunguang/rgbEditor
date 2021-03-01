@@ -29,48 +29,23 @@
 using namespace std;
 using namespace app;
 
-CfgInput::CfgInput()
+CfgInput::CfgInput(const int toolbarId_)
 	: CfgBase()
-	, inputVideoFolder("")
-	, inputVideoFileFilter("")
-	, vInputVideoFileNames()
-	, mp3File("")
-	, mp3Percentage(0)
+	, toolbarId(toolbarId_)
 {
 }
 
-void CfgInput::fromPropertyTree(const boost::property_tree::ptree &pt)
+CfgInput::~CfgInput()
 {
-	inputVideoFileFilter = pt.get<std::string>("inputVideoFileFilter");
-	inputVideoFolder = pt.get<std::string>("inputVideoFolder");
+}
 
-	const boost::property_tree::ptree pt1 = pt.get_child("videoFiles");
-	//cout << game.name << ", " << pt1.size() << endl;
-	vInputVideoFileNames.clear();
-	BOOST_FOREACH(const boost::property_tree::ptree::value_type &vk, pt1) {
-		const string fpath = vk.second.data();
-		//if (!boost::filesystem::exists(fpath)) {
-		//	dumpLog( "AppCfg::fromPropertyTree(): file %s does not exist!", fpath.c_str() );
-		//}
-		vInputVideoFileNames.push_back(fpath);
+#if 0
+CfgInput& CfgInput::operator = (const CfgInput &x)
+{
+	if (this != &x) {
+		toolbarId = x.toolbarId;
 	}
-	mp3File = pt.get<std::string>("mp3File");
-	mp3Percentage = pt.get<int>("mp3Percentage");
-
+	return *this;
 }
-
-boost::property_tree::ptree CfgInput::toPropertyTree()
-{
-	boost::property_tree::ptree pt;
-
-	pt.put("inputVideoFileFilter", inputVideoFileFilter);
-	pt.put("inputVideoFolder", inputVideoFolder);
-	BOOST_FOREACH(const string &fp, vInputVideoFileNames) {
-		pt.add("videoFiles.video", fp);
-	}
-	pt.put("mp3File", mp3File);
-	pt.put("mp3Percentage", mp3Percentage);
-
-	return pt;
-}
+#endif
 

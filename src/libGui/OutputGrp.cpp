@@ -341,3 +341,12 @@ void OutputGrp::updateOutVideoSzCandiates(const int socialMediaIdx, const ImgSiz
 	setOutputVideoSizes();
 	retranslateUI2();
 }
+
+void OutputGrp::uncheckVideoSizeBoxes()
+{
+	for (int i = 0; i < APP_MAX_VIDEO_SZ_ITEMS; ++i) {
+		m_vCheckBoxHorizontalSzOut[i]->setChecked( false );
+		m_vCheckBox1To1SzOut[i]->setChecked(false);
+		m_vCheckBoxVerticalSzOut[i]->setChecked(false);
+	}
+}

@@ -30,42 +30,29 @@
 
 #include "CfgBase.h"
 namespace app {
+	struct OutputVideoInfo {
+		std::string  fielname;
+		float		 frmRate;
+		cv::Size	 frmSize;
+		int			 fmt;
+	};
+
 	class CfgOutput : public CfgBase {
 	public:
-		CfgOutput();
+		CfgOutput(const int toolbarId_);
 		CfgOutput(const CfgOutput &x) = default;
-		CfgOutput& operator = (const CfgOutput &x) = default;
-		virtual ~CfgOutput() { CfgBase::~CfgBase(); };
+		virtual ~CfgOutput();
 
-		virtual boost::property_tree::ptree toPropertyTree();
-		virtual void fromPropertyTree(const boost::property_tree::ptree &pt);
+		CfgOutput& operator = (const CfgOutput &x) = default;
+
+		virtual boost::property_tree::ptree toPropertyTree()=0;
+		virtual void fromPropertyTree(const boost::property_tree::ptree &pt)=0;
+		virtual void genOutputVideoInfo() = 0;
 
 	public:
+		int	 toolbarId;
 		std::string  outputVideoFolder;
-		float		 outputVideoFrmRate;
-		cv::Size	 outputVideoFrmSize;
-		int			 outputVideoFmtIdx;
-		int			 outputVideoSizeIdx;
-		int			 outputVideoFpsIdx;
-		int          uploadPlatformIdx;
-
-		cv::Size	 outputVideoUsrDefSz;
-
-		std::vector<std::string> vOutputVideoFileFmts;
-		std::vector<std::string> vOutputVideoFrmSizes;
-		std::vector<std::string> vOutputVideoFrmRates;
-		std::vector<std::string> vUploadPlatforms;
-
-		std::vector<cv::Size> vOutputVideoFrmSizes_value;
-		std::vector<float>    vOutputVideoFrmRates_value;
-
-		std::string  headerVidoeFilePath;
-		std::string  insertingVidoeFilePath;
-		float32		 originalAudioIntensity;
-		float32      highlightSegmentLengthInSec;         //the video segment in [tEndAppausing-highlightSegmentLengthInSec, tEndAppausing] will be cut
-		float32		 minSegmentTimeSec;
-		bool		 isRenderTeamInfo;
-		bool		 showDebugMsg;
+		std::vector	 <OutputVideoInfo> vOutputVideoInfo;
 	};
 
 	typedef std::shared_ptr<CfgOutput>		CfgOutputPtr;

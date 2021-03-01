@@ -72,12 +72,14 @@ void AppGui::setupUi(QMainWindow *mainWin, AppCfgPtr &cfg_)
 	setupMenu(mainWin);
 	createAppWidgets(mainWin);
 
+	initSettingsFromCfg();
+
 	//set text of menus, buttons, labes etc.
 	retranslateUI(mainWin);
 
 	resizeUI( true );
 
-	initSettings();
+	showBkgImg();
 }
 
 
@@ -97,7 +99,8 @@ void AppGui::switchToolbarTaskTo(const AppToolbarTask newTaskId )
 		m_vToolbarGui[newTaskId]->m_startTaskButton->setEnabled(true);
 		m_vToolbarGui[newTaskId]->m_quitTaskButton->setEnabled(true);
 	}
-	initSettings();
+	initSettingsFromCfg();
+	showBkgImg();
 }
 
 void AppGui::createAppWidgets(QMainWindow *MainWindow)
@@ -166,13 +169,16 @@ void AppGui::retranslateUI(QMainWindow *MainWindow)
 } // retranslateUi
 
 
-void AppGui::initSettings()
+void AppGui::initSettingsFromCfg()
 {
-	showImg(m_vPixmap[APP_PIXMAP_INIT_BKG]);
-	
 	for (int i = 0; i < APP_TOOLBAR_ITEM_CNT; ++i) {
 		m_vToolbarGui[i]->initSettings( m_cfg );
 	}
+}
+
+void AppGui::showBkgImg()
+{
+	showImg(m_vPixmap[APP_PIXMAP_INIT_BKG]);
 }
 
 void AppGui::setupMenu(QMainWindow *mainWin)

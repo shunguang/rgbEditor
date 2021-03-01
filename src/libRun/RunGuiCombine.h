@@ -17,6 +17,9 @@
 * limitations under the License.
 *-------------------------------------------------------------------
 */
+
+//response to the GUI activites for toolbarCombine
+
 #ifndef __RUN_GUI_COMBINE_H__
 #define __RUN_GUI_COMBINE_H__
 
@@ -62,17 +65,22 @@ namespace app {
 		void on_lineEdit_outputUserDefineW_edited(const QString &s);
 		void on_lineEdit_outputUserDefineH_edited(const QString &s);
 		void on_comboBox_outputSocialMedia_currentIndexChanged(const int newIdx);
+
+		//start/quit buttons	
+		void on_pushButton_combineQuit_clicked();
+		void on_pushButton_combineStart_clicked();
+
 	private:
 		RunGuiDcPtr			m_dc;
 		Input4CombinePtr	m_inWgts;
 		OutputGrpPtr		m_outWgts;
 
 		//not neccessary but just for convince coding
-		AppCfg		*cfg;
-		AppGui		*ui;
+		AppCfg		*m_appCfg;
+		AppGui		*m_appUi;
 
-		CfgInput	m_inputCfg;
-		CfgOutput	m_outputCfg;
+		CfgInputCombine		m_inputCfg;
+		CfgOutputCombine	m_outputCfg;
 	};
 	typedef std::shared_ptr<RunGuiCombine>	RunGuiCombinePtr;
 }

@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <cfg>
-  <input>
+  <!-- cut toolbar -->
+  <inputCut>
+    <inputVideoFileFilter>Videos (*.mp4 *.avi *.ts)</inputVideoFileFilter>
+    <inputVideoFilepath>C:/rgbEditor/rgbVideoEditor/inputVideos/game0/a.mp4</inputVideoFilepath>
+  </inputCut>
+
+  <outputCut>
+    <outputVideoFolder>C:/temp</outputVideoFolder>
+  </outputCut>
+
+  <!-- edit toolbar -->
+  <inputEdit>
     <inputVideoFileFilter>Videos (*.mp4 *.avi *.ts)</inputVideoFileFilter>
     <inputVideoFolder>C:/rgbEditor/rgbVideoEditor/inputVideos/game0</inputVideoFolder>
     <videoFiles>
@@ -9,11 +20,27 @@
     </videoFiles>
     <mp3File>C:/rgbEditor/rgbVideoEditor/mp3/Battle_of_The_Lifetime_Ambient_Trance.mp3</mp3File>
     <mp3Percentage>50</mp3Percentage>
-  </input>
+  </inputEdit>
 
-  <output>
+  <outputEdit>
     <abc>100</abc>
-  </output>
+  </outputEdit>
+
+  <!-- combine toolbar -->
+  <inputCombine>
+    <inputVideoFileFilter>Videos (*.mp4 *.avi *.ts)</inputVideoFileFilter>
+    <inputVideoFolder>C:/rgbEditor/rgbVideoEditor/inputVideos/game0</inputVideoFolder>
+    <videoFiles>
+      <video>sample1.mp4</video>
+      <video>sample2.mp4</video>
+    </videoFiles>
+    <mp3File>C:/rgbEditor/rgbVideoEditor/mp3/Battle_of_The_Lifetime_Ambient_Trance.mp3</mp3File>
+    <mp3Percentage>50</mp3Percentage>
+  </inputCombine>
+
+  <outputCombine>
+    <abc>100</abc>
+  </outputCombine>
 
   <gui>
     <fontSize>8</fontSize>
@@ -36,5 +63,6 @@
     <logFolder>C:/rgbEditor/rgbVideoEditor/log</logFolder>
     <projProfileFolder>C:/rgbEditor/rgbVideoEditor/log/decodedProfiles</projProfileFolder>
   </log>
+
 
 </cfg>

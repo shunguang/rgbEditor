@@ -24,6 +24,9 @@ ToolbarCut::ToolbarCut( QGroupBox *parentGrp )
 	:ToolbarBase(APP_TOOLBAR_CUT, parentGrp)
 	, m_rectGrpBoxCut(0,0,0,0)
 {
+	m_vLineEditInitText.clear();
+	m_vLineEditInitText.push_back(".");
+	m_vLineEditInitText.push_back(".");
 }
 
 ToolbarCut::~ToolbarCut(){
@@ -38,11 +41,10 @@ void ToolbarCut::retranslateUI()
 	ToolbarBase::retranslateUI();
 
 	std::vector<std::string> vLabelText = { "Video File",  "Output folder" };
-	std::vector<std::string> vLineEditInitText = { "please choose or input an input file",  "please choose or input an output folder" };
 	for (int i = 0; i < CUT_PBUTTON_CNT; ++i) {
 		m_vLabelCut[i]->setText(QString::fromStdString(vLabelText[i]));
 		m_vPushbuttonCut[i]->setText(QString::fromStdString("..."));
-		m_vLineEditCut[i]->setText(QString::fromStdString(vLineEditInitText[i]));
+		m_vLineEditCut[i]->setText(QString::fromStdString(m_vLineEditInitText[i]));
 	}
 }
 
@@ -103,4 +105,18 @@ void ToolbarCut::createWidgets()
 		m_vLineEditCut[i] = new QLineEdit(m_grpBoxCut);
 		m_vLabelCut[i] = new QLabel(m_grpBoxCut);
 	}
+}
+
+void ToolbarCut::initSettings(AppCfgPtr &cfg)
+{
+
+	CfgInputCut prmIn;
+	CfgOutputCut prmOut;
+
+	cfg->getInput(prmIn);
+	cfg->getOutput(prmOut);
+
+	m_vLineEditInitText.clear();
+	m_vLineEditInitText.push_back(prmIn.inputVideoFilepath);
+	m_vLineEditInitText.push_back(prmOut.outputVideoFolder);
 }

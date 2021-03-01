@@ -35,6 +35,7 @@
 //#include "RunMgr.h"
 #include "RunGuiDc.h"
 #include "RunGuiCombine.h"
+#include "RunGuiCut.h"
 
 namespace app {
 	class LIBRUN_EXPORT RunGuiMain : public QMainWindow
@@ -56,11 +57,9 @@ namespace app {
 		
 		void on_pushButton_toolbarCutStart_clicked()	{ respns_toolbarStartTask(APP_TOOLBAR_CUT); }
 		void on_pushButton_toolbarEditStart_clicked()	{ respns_toolbarStartTask(APP_TOOLBAR_EDIT); }
-		void on_pushButton_toolbarCombineStart_clicked(){ respns_toolbarStartTask(APP_TOOLBAR_COMBINE); }
 
 		void on_pushButton_toolbarCutQuit_clicked()		{ respns_toolbarQuitTask(APP_TOOLBAR_CUT);  }
 		void on_pushButton_toolbarEditQuit_clicked()	{ respns_toolbarQuitTask(APP_TOOLBAR_EDIT); }
-		void on_pushButton_toolbarCombineQuit_clicked() { respns_toolbarQuitTask(APP_TOOLBAR_COMBINE); }
 
 		void respns_toolbarSwitchTask(const AppToolbarTask newTask);
 		void respns_toolbarStartTask(const AppToolbarTask newTask);
@@ -75,6 +74,7 @@ namespace app {
 		RunGuiDcPtr			m_dc;
 
 		RunGuiCombinePtr	m_combineTask;
+		RunGuiCutPtr		m_cutTask;
 	};
 }
 #endif // CLIENTGUI_H

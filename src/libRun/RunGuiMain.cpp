@@ -26,6 +26,7 @@ RunGuiMain::RunGuiMain(AppCfgPtr &cfg, QWidget *parent)
 	, m_ui(new AppGui())
 	, m_dc(NULL)
 	, m_combineTask(NULL)
+	, m_cutTask(NULL)
 {
 	m_dc.reset(new RunGuiDc(m_cfg, m_ui));
 
@@ -47,16 +48,16 @@ RunGuiMain::RunGuiMain(AppCfgPtr &cfg, QWidget *parent)
 	//1.2 the start and quit buttons for all toolbar task items 
 	QObject::connect(m_ui->m_vToolbarGui[APP_TOOLBAR_CUT]->m_startTaskButton, SIGNAL(clicked()), this, SLOT(on_pushButton_toolbarCutStart_clicked()), MY_QT_CONN);
 	QObject::connect(m_ui->m_vToolbarGui[APP_TOOLBAR_EDIT]->m_startTaskButton, SIGNAL(clicked()), this, SLOT(on_pushButton_toolbarEditStart_clicked()), MY_QT_CONN);
-	QObject::connect(m_ui->m_vToolbarGui[APP_TOOLBAR_COMBINE]->m_startTaskButton, SIGNAL(clicked()), this, SLOT(on_pushButton_toolbarCombineStart_clicked()), MY_QT_CONN);
 
 	QObject::connect(m_ui->m_vToolbarGui[APP_TOOLBAR_CUT]->m_quitTaskButton, SIGNAL(clicked()), this, SLOT(on_pushButton_toolbarCutQuit_clicked()), MY_QT_CONN);
 	QObject::connect(m_ui->m_vToolbarGui[APP_TOOLBAR_EDIT]->m_quitTaskButton, SIGNAL(clicked()), this, SLOT(on_pushButton_toolbarEditQuit_clicked()), MY_QT_CONN);
-	QObject::connect(m_ui->m_vToolbarGui[APP_TOOLBAR_COMBINE]->m_quitTaskButton, SIGNAL(clicked()), this, SLOT(on_pushButton_toolbarCombineQuit_clicked()), MY_QT_CONN);
 
 	//1.3 create Toolbar Combine task
 	m_combineTask.reset(new RunGuiCombine(m_dc));
 
-	
+	//1.3 create Toolbar Cut task
+	m_cutTask.reset(new RunGuiCut(m_dc));
+
 	//2. other threads
 	boost::this_thread::sleep(boost::posix_time::milliseconds(500));
 	m_dc->m_guiReady = true;

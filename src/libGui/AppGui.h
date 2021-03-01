@@ -53,10 +53,11 @@ namespace app {
 		void createAppWidgets(QMainWindow *MainWindow);
 
 		void retranslateUI(QMainWindow *MainWindow);
-		void initSettings();
+		void initSettingsFromCfg();
 		void calRects( const bool isInit );
 		void resizeUI(const bool isInit );
 		void enableToolBarItems( bool isEnable );
+		void showBkgImg();
 
 	public:
 		ImgLabel	*m_mainImg;

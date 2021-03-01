@@ -17,7 +17,7 @@
 * limitations under the License.
 *-------------------------------------------------------------------
 */
-//RunGuiDc an data container shared by all GUI related object
+//RunGuiDc an data container shared by all RunGui related object
 
 #ifndef __RUN_GUI_DC_H__
 #define __RUN_GUI_DC_H__

@@ -32,22 +32,20 @@
 namespace app {
 	class  CFG_EXPORT CfgInput : public CfgBase {
 	public:
-		CfgInput();
+		CfgInput( const int toolbarId_ );
 		CfgInput( const CfgInput &x )=default;
-		CfgInput& operator = (const CfgInput &x)=default;
-		virtual ~CfgInput() { CfgBase::~CfgBase();  };
+		virtual ~CfgInput();
 
-		virtual boost::property_tree::ptree toPropertyTree();
-		virtual void fromPropertyTree(const boost::property_tree::ptree &pt);
+		//todo: why default dose not work?
+		CfgInput& operator = (const CfgInput &x) = default;
+		//CfgInput& operator = (const CfgInput &x);
 
+		virtual boost::property_tree::ptree toPropertyTree() = 0 ;
+		virtual void fromPropertyTree(const boost::property_tree::ptree &pt)=0 ;
 	public:
-		std::string					inputVideoFolder;
-		std::string					inputVideoFileFilter;
-		std::vector<std::string>	vInputVideoFileNames;
-		std::string					mp3File;
-		int							mp3Percentage;
+		int toolbarId;
 	};
-	typedef std::shared_ptr<CfgInput>		CfgInputPtr;
+	typedef std::shared_ptr<CfgInput>	CfgInputPtr;
 }
 
 #endif

@@ -28,62 +28,11 @@
 #include "CfgOutput.h"
 using namespace app;
 using namespace std;
-CfgOutput::CfgOutput()
+CfgOutput::CfgOutput(const int toolbarId_)
 	: CfgBase()
+	, toolbarId(toolbarId_)
 {}
 
-
-boost::property_tree::ptree CfgOutput::toPropertyTree()
+CfgOutput::~CfgOutput()
 {
-	boost::property_tree::ptree pt;
-	return pt;
-}
-
-void CfgOutput::fromPropertyTree(const boost::property_tree::ptree &pt)
-{
-#if 0
-	 headerVidoeFilePath = pt.get<std::string>("headerVidoeFilePath");
-	 highlightSegmentLengthInSec = pt.get<float>("highlightSegmentLengthInSec");
-	 minSegmentTimeSec = pt.get<float>("minSegmentTimeSec");
-	 insertingVidoeFilePath = pt.get<std::string>("insertingVidoeFilePath");
-	 originalAudioIntensity = pt.get<float>("originalAudioIntensity");
-	 outputVideoFolder = pt.get<std::string>("outputVideoFolder");
-	 isRenderTeamInfo = (bool)pt.get<uint8>("isRenderTeamInfo");
-
-	//todo:
-	 showDebugMsg = false;
-	 vOutputVideoFileFmts.clear();
-	 vOutputVideoFileFmts.push_back("mp4");
-	 vOutputVideoFileFmts.push_back("avi");
-	 outputVideoFmtIdx = 0;
-
-
-	 vOutputVideoFrmSizes.clear();
-	 vOutputVideoFrmSizes.push_back("Original");
-	 vOutputVideoFrmSizes.push_back("1280x720");
-	 vOutputVideoFrmSizes.push_back("640x480");
-	 vOutputVideoFrmSizes_value.clear();
-	 vOutputVideoFrmSizes_value.push_back(cv::Size(0, 0));
-	 vOutputVideoFrmSizes_value.push_back(cv::Size(1280, 720));
-	 vOutputVideoFrmSizes_value.push_back(cv::Size(640, 480));
-	 outputVideoSizeIdx = 0;
-
-	 vOutputVideoFrmRates.clear();
-	 vOutputVideoFrmRates.push_back("Original");
-	 vOutputVideoFrmRates.push_back("30");
-	 vOutputVideoFrmRates.push_back("60");
-	 outputVideoFpsIdx = 0;
-
-	 vOutputVideoFrmRates_value.clear();
-	 vOutputVideoFrmRates_value.push_back(0);   //
-	 vOutputVideoFrmRates_value.push_back(30);
-	 vOutputVideoFrmRates_value.push_back(60);
-
-	 uploadPlatformIdx = 0;
-	 vUploadPlatforms.push_back("YouTube");
-	 vUploadPlatforms.push_back("Facebook");
-	 vUploadPlatforms.push_back("Twitter");
-	 vUploadPlatforms.push_back("Instagram");
-	 vUploadPlatforms.push_back("Youku");
-#endif
 }

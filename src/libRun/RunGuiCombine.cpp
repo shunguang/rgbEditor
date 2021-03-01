@@ -23,11 +23,11 @@ using namespace app;
 
 RunGuiCombine::RunGuiCombine(RunGuiDcPtr &dc)
 	: m_dc(dc)
-	, cfg(dc->m_cfg.get())
-	, ui(dc->m_ui.get())
+	, m_appCfg(dc->m_cfg.get())
+	, m_appUi(dc->m_ui.get())
 {
 	//Toolbar combine
-	ToolbarCombine	*pp = dynamic_cast<ToolbarCombine *> (ui->m_vToolbarGui[APP_TOOLBAR_COMBINE].get());
+	ToolbarCombine	*pp = dynamic_cast<ToolbarCombine *> (m_appUi->m_vToolbarGui[APP_TOOLBAR_COMBINE].get());
 
 	//input widgets
 	m_inWgts = pp->m_in;
@@ -58,8 +58,12 @@ RunGuiCombine::RunGuiCombine(RunGuiDcPtr &dc)
 	QObject::connect(m_outWgts->m_vComboBoxOut[OUT_COMBOBOX_SOCIAL_MEDIA],
 		SIGNAL(currentIndexChanged(int)), this, SLOT(on_comboBox_outputSocialMedia_currentIndexChanged(int)), MY_QT_CONN);
 
-	m_inputCfg = cfg->getInput();
-	m_outputCfg = cfg->getOutput();
+	//start/quit buttons
+	QObject::connect( pp->m_startTaskButton, SIGNAL(clicked()), this, SLOT(on_pushButton_combineStart_clicked()), MY_QT_CONN);
+	QObject::connect( pp->m_quitTaskButton, SIGNAL(clicked()), this, SLOT(on_pushButton_combineQuit_clicked()), MY_QT_CONN);
+
+	m_appCfg->getInput(m_inputCfg);
+	m_appCfg->getOutput(m_outputCfg);
 
 	m_inWgts->enableDisableButtons();
 }
@@ -87,7 +91,7 @@ void RunGuiCombine::on_pushBotton_combineBrowseMp3_clicked()
 
 	boost::filesystem::path p(head);
 	if (!boost::filesystem::exists(p)) {
-		head = "c:/myApps";
+		head = "c:/temp";
 	}
 	QString initFolder = QString::fromStdString(head);
 	QString initFilter = QString::fromStdString("*.mp3");
@@ -165,7 +169,7 @@ void RunGuiCombine::on_lineEdit_inputVideoFolder_edited(const QString &s)
 	std::string dir2 = s.toStdString();
 	m_inputCfg.inputVideoFolder = dir2;
 
-	//ui->updateEnabilityGameInfoButtons();
+	//m_appUi->updateEnabilityGameInfoButtons();
 }
 
 void RunGuiCombine::on_lineEdit_inputMp3Path_edited(const QString &s)
@@ -212,4 +216,19 @@ void RunGuiCombine::on_comboBox_outputSocialMedia_currentIndexChanged(const int 
 {
 	const ImgSize inputVideoSz(1920, 1080);
 	m_outWgts->updateOutVideoSzCandiates( newIdx, inputVideoSz);
+	m_outWgts->uncheckVideoSizeBoxes();
+}
+
+
+void RunGuiCombine::on_pushButton_combineQuit_clicked()
+{
+	m_appCfg->setTask(APP_TOOLBAR_UNKN);
+	m_appUi->switchToolbarTaskTo(APP_TOOLBAR_UNKN);
+}
+
+void RunGuiCombine::on_pushButton_combineStart_clicked()
+{
+	//set the current setting prms into shared Cfg
+	m_appCfg->setInput(m_inputCfg);
+	m_appCfg->setOutput(m_outputCfg);
 }

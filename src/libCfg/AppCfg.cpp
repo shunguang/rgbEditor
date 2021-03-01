@@ -25,17 +25,59 @@ using namespace app;
 AppCfg::AppCfg()
 	: m_toolbarTaskId(-1)       //must be set as -1, see APP_TOOLBAR_UNKN def in GuiUtil.h
 	, m_demux( new CfgDemuxingDecoding() )
-	, m_input( new CfgInput() )
-	, m_output(new CfgOutput())
 	, m_gui(new CfgGui() )
 	, m_log(new CfgLog())
 	, m_dc(new CfgDc())
 {
+	m_vInput[APP_TOOLBAR_CUT].reset(new CfgInputCut() );
+	m_vInput[APP_TOOLBAR_EDIT].reset(new CfgInputEdit());
+	m_vInput[APP_TOOLBAR_COMBINE].reset(new CfgInputCombine());
+
+	m_vOutput[APP_TOOLBAR_CUT].reset(new CfgOutputCut());
+	m_vOutput[APP_TOOLBAR_EDIT].reset(new CfgOutputEdit());
+	m_vOutput[APP_TOOLBAR_COMBINE].reset(new CfgOutputCombine());
 }
 
 AppCfg::~AppCfg()
 {
 }
+
+void AppCfg::getInput(CfgInputCut &x)
+{
+	boost::mutex::scoped_lock lock(m_mutexCfg);
+	x = *(dynamic_cast<CfgInputCut *> (m_vInput[APP_TOOLBAR_CUT].get()));
+}
+
+void AppCfg::getInput(CfgInputEdit &x)
+{
+	boost::mutex::scoped_lock lock(m_mutexCfg);
+	x = *(dynamic_cast<CfgInputEdit *> (m_vInput[APP_TOOLBAR_EDIT].get()));
+}
+
+void AppCfg::getInput(CfgInputCombine &x)
+{
+	boost::mutex::scoped_lock lock(m_mutexCfg);
+	x = *(dynamic_cast<CfgInputCombine *> (m_vInput[APP_TOOLBAR_COMBINE].get()));
+}
+
+void AppCfg::getOutput(CfgOutputCut &out)
+{
+	boost::mutex::scoped_lock lock(m_mutexCfg);
+	out = *(dynamic_cast<CfgOutputCut *>(m_vOutput[APP_TOOLBAR_CUT].get()));
+}
+
+void AppCfg::getOutput(CfgOutputEdit &x)
+{
+	boost::mutex::scoped_lock lock(m_mutexCfg);
+	x = *(dynamic_cast<CfgOutputEdit *>(m_vOutput[APP_TOOLBAR_EDIT].get()));
+}
+
+void AppCfg::getOutput(CfgOutputCombine &x)
+{
+	boost::mutex::scoped_lock lock(m_mutexCfg);
+	x = *(dynamic_cast<CfgOutputCombine *>(m_vOutput[APP_TOOLBAR_COMBINE].get()));
+}
+
 
 void AppCfg::readFromFile(const char *fname)
 {
@@ -68,11 +110,14 @@ void AppCfg::fromPropertyTree(const boost::property_tree::ptree &pt0)
 	boost::property_tree::ptree pt1;
 
 	//---------------------------------
-	pt = pt0.get_child("input");
-	m_input->fromPropertyTree(pt);
+	for (int i = 0; i < APP_TOOLBAR_ITEM_CNT; ++i) {
+		const string &tag = m_vToobarNames[i];
+		pt = pt0.get_child( "input" + tag );
+		m_vInput[i]->fromPropertyTree(pt);
 
-	pt = pt0.get_child("output");
-	m_output->fromPropertyTree(pt);
+		pt = pt0.get_child("output" + tag );
+		m_vOutput[i]->fromPropertyTree(pt);
+	}
 
 	pt = pt0.get_child("gui");
 	m_gui->fromPropertyTree(pt);
@@ -88,16 +133,20 @@ void AppCfg::fromPropertyTree(const boost::property_tree::ptree &pt0)
 boost::property_tree::ptree AppCfg::toPropertyTree()
 {
 	boost::property_tree::ptree pt1 = m_demux->toPropertyTree();
-	boost::property_tree::ptree pt2 = m_input->toPropertyTree();
-	boost::property_tree::ptree pt3 = m_output->toPropertyTree();
 	boost::property_tree::ptree pt4 = m_gui->toPropertyTree();
 	boost::property_tree::ptree pt5 = m_dc->toPropertyTree();
 	boost::property_tree::ptree pt6 = m_log->toPropertyTree();
 
 	boost::property_tree::ptree pt;
 	pt.add_child("cfg.demux",	pt1);
-	pt.add_child("cfg.input",	pt2);
-	pt.add_child("cfg.output",	pt3);
+	for (int i = 0; i < APP_TOOLBAR_ITEM_CNT; ++i) {
+		const string &tag = m_vToobarNames[i];
+		boost::property_tree::ptree ptIn = m_vInput[i]->toPropertyTree();
+		pt.add_child("cfg.input"+tag, ptIn);
+
+		boost::property_tree::ptree ptOut = m_vOutput[i]->toPropertyTree();
+		pt.add_child("cfg.output"+tag, ptOut);
+	}
 	pt.add_child("cfg.gui",		pt4);
 	pt.add_child("cfg.dc",		pt5);
 	pt.add_child("cfg.log",		pt6);

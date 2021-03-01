@@ -27,6 +27,9 @@
     <ClInclude Include="..\..\libRun\RunGuiDc.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\libRun\RunGuiEdit.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\libRun\RunGuiCombine.cpp">
@@ -44,7 +47,13 @@
     <ClCompile Include="GeneratedFiles\moc_RunGuiMain.cpp">
       <Filter>QtGeneratedFiles</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\libRun\RunAppGui_old.cpp">
+    <ClCompile Include="..\..\libRun\RunGuiCut.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\moc_RunGuiCut.cpp">
+      <Filter>QtGeneratedFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libRun\RunGuiEdit.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -53,6 +62,9 @@
       <Filter>Header Files</Filter>
     </CustomBuild>
     <CustomBuild Include="..\..\libRun\RunGuiCombine.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\libRun\RunGuiCut.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
   </ItemGroup>

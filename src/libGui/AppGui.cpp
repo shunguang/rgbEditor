@@ -164,8 +164,6 @@ void AppGui::retranslateUI(QMainWindow *MainWindow)
 	for (ToolbarBasePtr &e : m_vToolbarGui) {
 		e->retranslateUI();
 	}
-
-
 } // retranslateUi
 
 
@@ -325,7 +323,8 @@ void AppGui::calRects(const bool isInit)
 	const int b2 = 2 * b;
 	const int logWinH = 50;
 	const int toolbarCutWinH = 2*APP_LINE_HEIGHT + 3*b;
-	const int toolbarEditWinH = 200;
+	const int hCtrl4Edit = 80;
+	const int toolbarEditWinH = 260 + hCtrl4Edit;
 	const int toolbarCombineWinH = 280;
 
 	int imgWinW, imgWinH;

@@ -153,7 +153,9 @@
     <ClCompile Include="..\..\unitTest\test_rgbEditor.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Xml Include="..\..\unitTest\res\cfgVideoEditor.xml" />
+    <Xml Include="..\..\unitTest\res\cfgVideoEditor.xml">
+      <SubType>Designer</SubType>
+    </Xml>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

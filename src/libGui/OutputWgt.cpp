@@ -17,10 +17,10 @@
 * limitations under the License.
 *-------------------------------------------------------------------
 */
-#include "OutputGrp.h"
+#include "OutputWgt.h"
 using namespace app;
 using namespace std;
-OutputGrp::OutputGrp(QGroupBox *parentGrp)
+OutputWgt::OutputWgt(QGroupBox *parentGrp)
 	: m_grpBoxParent(parentGrp)
 	, m_smCurrType(APP_SM_YOUTUBE)
 	, m_inputVideoImgDim(1920, 1080)
@@ -43,11 +43,11 @@ OutputGrp::OutputGrp(QGroupBox *parentGrp)
 
 }
 
-OutputGrp::~OutputGrp()
+OutputWgt::~OutputWgt()
 {
 }
 
-void OutputGrp::createWidgets()
+void OutputWgt::createWidgets()
 {
 	for (auto &e:m_vLabelOut) {
 		e = new QLabel(m_grpBoxParent);
@@ -72,7 +72,7 @@ void OutputGrp::createWidgets()
 	}
 }
 
-void OutputGrp::resizeUI()
+void OutputWgt::resizeUI()
 {
 	calRectsOut();
 
@@ -95,7 +95,7 @@ void OutputGrp::resizeUI()
 	}
 }
 
-void OutputGrp::retranslateUI()
+void OutputWgt::retranslateUI()
 {
 	for (int i = 0; i < OUT_LABEL_CNT; ++i) {
 		m_vLabelOut[i]->setText(QString::fromStdString(m_vTextLabelOut[i]));
@@ -116,7 +116,7 @@ void OutputGrp::retranslateUI()
 
 }
 
-void OutputGrp::retranslateUI2()
+void OutputWgt::retranslateUI2()
 {
 	appAssert( m_smCurrType >= 0 && m_smCurrType < APP_SM_CNT, "m_smCurrType out of order!");
 	for (int i = 0; i < m_nCheckBoxH; ++i) {
@@ -154,7 +154,7 @@ void OutputGrp::retranslateUI2()
 	p->setEnabled(true);
 }
 
-void OutputGrp::calRectsOut()
+void OutputWgt::calRectsOut()
 {
 	const int h = APP_LINE_HEIGHT;
 	const int b = APP_GUI_BORDER_SIZE;
@@ -167,7 +167,7 @@ void OutputGrp::calRectsOut()
 	int x = b, y = 3*b, w3=50;
 	int w2 = w0 - (w1 + w3 + 4 * b);
 
-	appAssert(w2>200, "OutputGrp::calRectsOut(): w2 is too small!");
+	appAssert(w2>200, "OutputWgt::calRectsOut(): w2 is too small!");
 
 	resetRectToZeros();
 
@@ -252,7 +252,7 @@ void OutputGrp::calRectsOut()
 }
 
 
-void OutputGrp::setTextOut(const int languageId)
+void OutputWgt::setTextOut(const int languageId)
 {
 	m_vTextLabelOut[OUT_LABEL_FOLDER] = "Output Folder";
 	m_vTextLabelOut[OUT_LABEL_MEDIA_TYPE] = "Social Media";
@@ -283,7 +283,7 @@ void OutputGrp::setTextOut(const int languageId)
 	m_textGrpBoxTitle = "Output";
 }
 
-void OutputGrp::resetRectToZeros()
+void OutputWgt::resetRectToZeros()
 {
 	for (QRect &r : m_vRectLabelOut) {
 		r.setRect(0, 0, 0, 0);
@@ -314,7 +314,7 @@ void OutputGrp::resetRectToZeros()
 	}
 }
 
-void OutputGrp::setOutputVideoSizes()
+void OutputWgt::setOutputVideoSizes()
 {
 	for (int i = 0; i < APP_MAX_VIDEO_SZ_ITEMS; ++i) {
 		m_vTextCheckBoxV[i] = "";
@@ -334,7 +334,7 @@ void OutputGrp::setOutputVideoSizes()
 	m_nCheckBox1To1= nItemsToShow;
 }
 
-void OutputGrp::updateOutVideoSzCandiates(const int socialMediaIdx, const ImgSize &inputVideoSz)
+void OutputWgt::updateOutVideoSzCandiates(const int socialMediaIdx, const ImgSize &inputVideoSz)
 {
 	m_smCurrType = (AppSocialMedia_t)socialMediaIdx;
 	m_videoSpec->reset(m_smCurrType, inputVideoSz.w, inputVideoSz.h);
@@ -342,7 +342,7 @@ void OutputGrp::updateOutVideoSzCandiates(const int socialMediaIdx, const ImgSiz
 	retranslateUI2();
 }
 
-void OutputGrp::uncheckVideoSizeBoxes()
+void OutputWgt::uncheckVideoSizeBoxes()
 {
 	for (int i = 0; i < APP_MAX_VIDEO_SZ_ITEMS; ++i) {
 		m_vCheckBoxHorizontalSzOut[i]->setChecked( false );

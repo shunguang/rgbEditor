@@ -29,53 +29,53 @@ AppCfg::AppCfg()
 	, m_log(new CfgLog())
 	, m_dc(new CfgDc())
 {
-	m_vInput[APP_TOOLBAR_CUT].reset(new CfgInputCut() );
-	m_vInput[APP_TOOLBAR_EDIT].reset(new CfgInputEdit());
-	m_vInput[APP_TOOLBAR_COMBINE].reset(new CfgInputCombine());
+	m_vInput[APP_TOOLBAR_CUT].reset(new CfgCutInput() );
+	m_vInput[APP_TOOLBAR_EDIT].reset(new CfgEditInput());
+	m_vInput[APP_TOOLBAR_COMBINE].reset(new CfgCombineInput());
 
-	m_vOutput[APP_TOOLBAR_CUT].reset(new CfgOutputCut());
-	m_vOutput[APP_TOOLBAR_EDIT].reset(new CfgOutputEdit());
-	m_vOutput[APP_TOOLBAR_COMBINE].reset(new CfgOutputCombine());
+	m_vOutput[APP_TOOLBAR_CUT].reset(new CfgCutOutput());
+	m_vOutput[APP_TOOLBAR_EDIT].reset(new CfgEditOutput());
+	m_vOutput[APP_TOOLBAR_COMBINE].reset(new CfgCombineOutput());
 }
 
 AppCfg::~AppCfg()
 {
 }
 
-void AppCfg::getInput(CfgInputCut &x)
+void AppCfg::getInput(CfgCutInput &x)
 {
 	boost::mutex::scoped_lock lock(m_mutexCfg);
-	x = *(dynamic_cast<CfgInputCut *> (m_vInput[APP_TOOLBAR_CUT].get()));
+	x = *(dynamic_cast<CfgCutInput *> (m_vInput[APP_TOOLBAR_CUT].get()));
 }
 
-void AppCfg::getInput(CfgInputEdit &x)
+void AppCfg::getInput(CfgEditInput &x)
 {
 	boost::mutex::scoped_lock lock(m_mutexCfg);
-	x = *(dynamic_cast<CfgInputEdit *> (m_vInput[APP_TOOLBAR_EDIT].get()));
+	x = *(dynamic_cast<CfgEditInput *> (m_vInput[APP_TOOLBAR_EDIT].get()));
 }
 
-void AppCfg::getInput(CfgInputCombine &x)
+void AppCfg::getInput(CfgCombineInput &x)
 {
 	boost::mutex::scoped_lock lock(m_mutexCfg);
-	x = *(dynamic_cast<CfgInputCombine *> (m_vInput[APP_TOOLBAR_COMBINE].get()));
+	x = *(dynamic_cast<CfgCombineInput *> (m_vInput[APP_TOOLBAR_COMBINE].get()));
 }
 
-void AppCfg::getOutput(CfgOutputCut &out)
+void AppCfg::getOutput(CfgCutOutput &out)
 {
 	boost::mutex::scoped_lock lock(m_mutexCfg);
-	out = *(dynamic_cast<CfgOutputCut *>(m_vOutput[APP_TOOLBAR_CUT].get()));
+	out = *(dynamic_cast<CfgCutOutput *>(m_vOutput[APP_TOOLBAR_CUT].get()));
 }
 
-void AppCfg::getOutput(CfgOutputEdit &x)
+void AppCfg::getOutput(CfgEditOutput &x)
 {
 	boost::mutex::scoped_lock lock(m_mutexCfg);
-	x = *(dynamic_cast<CfgOutputEdit *>(m_vOutput[APP_TOOLBAR_EDIT].get()));
+	x = *(dynamic_cast<CfgEditOutput *>(m_vOutput[APP_TOOLBAR_EDIT].get()));
 }
 
-void AppCfg::getOutput(CfgOutputCombine &x)
+void AppCfg::getOutput(CfgCombineOutput &x)
 {
 	boost::mutex::scoped_lock lock(m_mutexCfg);
-	x = *(dynamic_cast<CfgOutputCombine *>(m_vOutput[APP_TOOLBAR_COMBINE].get()));
+	x = *(dynamic_cast<CfgCombineOutput *>(m_vOutput[APP_TOOLBAR_COMBINE].get()));
 }
 
 

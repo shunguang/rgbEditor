@@ -1,6 +1,6 @@
 /*
 *-------------------------------------------------------------------
-* RunGuiCombine.h
+* RunGuiCut.h
 * Copyright(c) 2019, The RgbVideoEditor Author (Shunguang Wu).
 * All Rights Reserved.
 * You may not use this file except in compliance with the License:
@@ -20,8 +20,8 @@
 
 //response to the GUI activites for toolbarCombine
 
-#ifndef __RUN_GUI_COMBINE_H__
-#define __RUN_GUI_COMBINE_H__
+#ifndef __RUN_GUI_CUT_H__
+#define __RUN_GUI_CUT_H__
 
 #include "libUtil/libUtil.h"
 #include "libCfg/AppCfg.h"
@@ -36,54 +36,41 @@
 #include "RunGuiDc.h"
 
 namespace app {
-	class LIBRUN_EXPORT RunGuiCombine : public QMainWindow
+	class LIBRUN_EXPORT RunGuiCut : public QMainWindow
 	{
 		Q_OBJECT
 
 	public:
 		//all the threads share the same cfg located at only one physical address
-		RunGuiCombine( RunGuiDcPtr &dc );
-		~RunGuiCombine();
+		RunGuiCut( RunGuiDcPtr &dc );
+		~RunGuiCut();
 
 	public slots:
-		//input group
-		void on_pushButton_combineBrowseFolder_clicked();
-		void on_pushButton_combineBrowseMp3_clicked();
-		void on_pushButton_combineLoadAll_clicked();
-		void on_pushButton_combineRemoveAll_clicked();
-		void on_pushButton_combineBrowseAppendOne_clicked();
-		void on_pushButton_combineBrowseRemoveOne_clicked();
-		void on_pushButton_combineUp_clicked();
-		void on_pushButton_combineDown_clicked();
+		//input file path
+		void on_pushButton_inputFile_clicked();
+		void on_lineEdit_inputFile_edited(const QString &s);
 
-		void on_lineEdit_inputVideoFolder_edited(const QString &s);
-		void on_lineEdit_inputMp3Path_edited(const QString &s);
-		void on_sliderMp3_valueChgd(int value);
-
-		//output group
+		//output folder
 		void on_pushButton_outputFolder_clicked();
-		void on_lineEdit_outputVideoFolder_edited(const QString &s);
-		void on_lineEdit_outputUserDefineW_edited(const QString &s);
-		void on_lineEdit_outputUserDefineH_edited(const QString &s);
-		void on_comboBox_outputSocialMedia_currentIndexChanged(const int newIdx);
+		void on_lineEdit_outputFolder_edited(const QString &s);
 
 		//start/quit buttons	
-		void on_pushButton_combineQuit_clicked();
-		void on_pushButton_combineStart_clicked();
+		void on_pushButton_cutQuit_clicked();
+		void on_pushButton_cutStart_clicked();
 
 	private:
-		RunGuiDcPtr			m_dc;
-		CombineInputPtr		m_inWgts;
-		OutputWgtPtr		m_outWgts;
+		RunGuiDcPtr		m_dc;
+
+		ToolbarCut*		m_cutWgts;
 
 		//not neccessary but just for convince coding
 		AppCfg		*m_appCfg;
 		AppGui		*m_appUi;
 
-		CfgCombineInput		m_inputCfg;
-		CfgCombineOutput	m_outputCfg;
+		CfgCutInput		m_inputCfg;
+		CfgCutOutput	m_outputCfg;
 	};
-	typedef std::shared_ptr<RunGuiCombine>	RunGuiCombinePtr;
+	typedef std::shared_ptr<RunGuiCut>	RunGuiCutPtr;
 }
 #endif // CLIENTGUI_H
 

@@ -36,22 +36,25 @@
     <ClCompile Include="..\..\libCfg\CfgGui.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\libCfg\CfgInputCombine.cpp">
+    <ClCompile Include="..\..\libCfg\CfgEditInput.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\libCfg\CfgOutputCombine.cpp">
+    <ClCompile Include="..\..\libCfg\CfgEditOutput.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\libCfg\CfgInputCut.cpp">
+    <ClCompile Include="..\..\libCfg\CfgEditCtrl.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\libCfg\CfgInputEdit.cpp">
+    <ClCompile Include="..\..\libCfg\CfgCombineInput.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\libCfg\CfgOutputCut.cpp">
+    <ClCompile Include="..\..\libCfg\CfgCombineOutput.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\libCfg\CfgOutputEdit.cpp">
+    <ClCompile Include="..\..\libCfg\CfgCutOutput.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libCfg\CfgCutInput.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -86,22 +89,25 @@
     <ClInclude Include="..\..\libCfg\CfgRenderImg.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\libCfg\CfgOutputCombine.h">
+    <ClInclude Include="..\..\libCfg\CfgEditInput.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\libCfg\CfgInputCombine.h">
+    <ClInclude Include="..\..\libCfg\CfgEditOutput.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\libCfg\CfgInputCut.h">
+    <ClInclude Include="..\..\libCfg\CfgEditCtrl.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\libCfg\CfgInputEdit.h">
+    <ClInclude Include="..\..\libCfg\CfgCombineInput.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\libCfg\CfgOutputCut.h">
+    <ClInclude Include="..\..\libCfg\CfgCombineOutput.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\libCfg\CfgOutputEdit.h">
+    <ClInclude Include="..\..\libCfg\CfgCutInput.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libCfg\CfgCutOutput.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

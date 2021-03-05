@@ -82,6 +82,8 @@ namespace app {
 	void UTIL_EXPORT splitFolder(const std::string &fPath, std::string &fDir, std::string &fName);
 	bool UTIL_EXPORT isVideoFile(const std::string &filePath);
 	bool UTIL_EXPORT isImgeFile(const std::string &filePath);
+
+	std::string UTIL_EXPORT getDirFromFilepath(const std::string &f);
 }
 
 #endif

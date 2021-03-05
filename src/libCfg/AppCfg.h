@@ -24,13 +24,15 @@
 
 #include "libUtil/libUtil.h"
 #include "CfgLog.h"
-#include "CfgInputCut.h"
-#include "CfgInputEdit.h"
-#include "CfgInputCombine.h"
+#include "CfgCutInput.h"
+#include "CfgCutOutput.h"
 
-#include "CfgOutputCut.h"
-#include "CfgOutputEdit.h"
-#include "CfgOutputCombine.h"
+#include "CfgEditInput.h"
+#include "CfgEditCtrl.h"
+#include "CfgEditOutput.h"
+
+#include "CfgCombineInput.h"
+#include "CfgCombineOutput.h"
 
 #include "CfgGui.h"
 #include "CfgDc.h"
@@ -47,33 +49,33 @@ namespace app {
 		void writeToFile(const char *fanme);
 		std::string toStr();
 
-		void getInput(CfgInputCut &x);
-		void getInput(CfgInputEdit &x);
-		void getInput(CfgInputCombine &x);
+		void getInput(CfgCutInput &x);
+		void getInput(CfgEditInput &x);
+		void getInput(CfgCombineInput &x);
 
-		void setInput(const CfgInputCombine &x) {
-			setInputT<CfgInputCombine>(x);
+		void setInput(const CfgCombineInput &x) {
+			setInputT<CfgCombineInput>(x);
 		}
-		void setInput(const CfgInputCut &x) {
-			setInputT<CfgInputCut>(x);
+		void setInput(const CfgCutInput &x) {
+			setInputT<CfgCutInput>(x);
 		}
-		void setInput(const CfgInputEdit &x) {
-			setInputT<CfgInputEdit>(x);
+		void setInput(const CfgEditInput &x) {
+			setInputT<CfgEditInput>(x);
 		}
 
 
-		void getOutput(CfgOutputCut &x);
-		void getOutput(CfgOutputEdit &x);
-		void getOutput(CfgOutputCombine &x);
+		void getOutput(CfgCutOutput &x);
+		void getOutput(CfgEditOutput &x);
+		void getOutput(CfgCombineOutput &x);
 
-		void setOutput(const CfgOutputCut &x) {
-			setOutputT<CfgOutputCut>(x);
+		void setOutput(const CfgCutOutput &x) {
+			setOutputT<CfgCutOutput>(x);
 		}
-		void setOutput(const CfgOutputEdit &x) {
-			setOutputT<CfgOutputEdit>(x);
+		void setOutput(const CfgEditOutput &x) {
+			setOutputT<CfgEditOutput>(x);
 		}
-		void setOutput(const CfgOutputCombine &x) { 
-			setOutputT<CfgOutputCombine>(x); 
+		void setOutput(const CfgCombineOutput &x) { 
+			setOutputT<CfgCombineOutput>(x); 
 		}
 
 		CfgGui getGui() {

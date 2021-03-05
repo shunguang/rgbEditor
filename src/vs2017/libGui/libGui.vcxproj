@@ -142,11 +142,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\libGui\AppGui.cpp" />
+    <ClCompile Include="..\..\libGui\EditCtrl.cpp" />
     <ClCompile Include="..\..\libGui\GuiUtil.cpp" />
     <ClCompile Include="..\..\libGui\ImgLabel.cpp" />
-    <ClCompile Include="..\..\libGui\Input4Combine.cpp" />
+    <ClCompile Include="..\..\libGui\CombineInput.cpp" />
+    <ClCompile Include="..\..\libGui\EditInput.cpp" />
     <ClCompile Include="..\..\libGui\MsgBox.cpp" />
-    <ClCompile Include="..\..\libGui\OutputGrp.cpp" />
+    <ClCompile Include="..\..\libGui\OutputWgt.cpp" />
     <ClCompile Include="..\..\libGui\PlayerControls.cpp" />
     <ClCompile Include="..\..\libGui\MultiRngSliders.cpp" />
     <ClCompile Include="..\..\libGui\ToolbarBase.cpp" />
@@ -164,10 +166,12 @@
   <ItemGroup>
     <ClInclude Include="..\..\libGui\AppGui.h" />
     <ClInclude Include="..\..\libGui\AppSlider.h" />
+    <ClInclude Include="..\..\libGui\EditCtrl.h" />
     <ClInclude Include="..\..\libGui\GuiDefs.h" />
     <ClInclude Include="..\..\libGui\GuiUtil.h" />
-    <ClInclude Include="..\..\libGui\Input4Combine.h" />
-    <ClInclude Include="..\..\libGui\OutputGrp.h" />
+    <ClInclude Include="..\..\libGui\CombineInput.h" />
+    <ClInclude Include="..\..\libGui\EditInput.h" />
+    <ClInclude Include="..\..\libGui\OutputWgt.h" />
     <ClInclude Include="..\..\libGui\ToolbarBase.h" />
     <ClInclude Include="..\..\libGui\ToolbarCombine.h" />
     <ClInclude Include="..\..\libGui\ToolbarCut.h" />

@@ -17,12 +17,12 @@
 * limitations under the License.
 *-------------------------------------------------------------------
 */
-#include "Input4Combine.h"
+#include "CombineInput.h"
 #include "AppSlider.h"
 
 using namespace app;
 using namespace std;
-Input4Combine::Input4Combine(QGroupBox *parentGrp)
+CombineInput::CombineInput(QGroupBox *parentGrp)
 	: m_grpBoxParent(parentGrp)
 {
 	int languageId = 0;
@@ -35,11 +35,11 @@ Input4Combine::Input4Combine(QGroupBox *parentGrp)
 	setTextOut(languageId);
 }
 
-Input4Combine::~Input4Combine()
+CombineInput::~CombineInput()
 {
 }
 
-void Input4Combine::createWidgets()
+void CombineInput::createWidgets()
 {
 	for (auto &e:m_vLabel) {
 		e = new QLabel(m_grpBoxParent);
@@ -47,7 +47,7 @@ void Input4Combine::createWidgets()
 	for (auto &e : m_vLineEdit) {
 		e = new QLineEdit(m_grpBoxParent);
 	}
-	for (auto &e : m_vPushBotton) {
+	for (auto &e : m_vPushButton) {
 		e = new QPushButton(m_grpBoxParent);
 	}
 
@@ -69,7 +69,7 @@ void Input4Combine::createWidgets()
 
 }
 
-void Input4Combine::resizeUI()
+void CombineInput::resizeUI()
 {
 	calRectsOut();
 
@@ -80,14 +80,14 @@ void Input4Combine::resizeUI()
 		m_vLineEdit[i]->setGeometry(m_vRectLineEdit[i]);
 	}
 	for (int i = 0; i < COMBINE_IN_PBUTTON_CNT; ++i) {
-		m_vPushBotton[i]->setGeometry(m_vRectPushButton[i]);
+		m_vPushButton[i]->setGeometry(m_vRectPushButton[i]);
 	}
 	m_sliderMp3->setGeometry(m_rectSliderMp3);
 	m_inputFileTable->setGeometry(m_rectInputFileTable);
 	m_inputFileTable->setColumnWidth(0, m_rectInputFileTable.width());
 }
 
-void Input4Combine::retranslateUI()
+void CombineInput::retranslateUI()
 {
 	for (int i = 0; i < COMBINE_IN_LABEL_CNT; ++i) {
 		m_vLabel[i]->setText(QString::fromStdString(m_vTextLabel[i]));
@@ -98,13 +98,13 @@ void Input4Combine::retranslateUI()
 	}
 
 	for (int i = 0; i < COMBINE_IN_PBUTTON_CNT; ++i) {
-		m_vPushBotton[i]->setText(QString::fromStdString(m_vTextButton[i]));
+		m_vPushButton[i]->setText(QString::fromStdString(m_vTextButton[i]));
 	}
 	m_grpBoxParent->setTitle(QString::fromStdString(m_textGrpBoxTitle));
 }
 
 
-void Input4Combine::calRectsOut()
+void CombineInput::calRectsOut()
 {
 	const int h = APP_LINE_HEIGHT;
 	const int b = APP_GUI_BORDER_SIZE;
@@ -172,7 +172,7 @@ void Input4Combine::calRectsOut()
 	m_vRectLabel[COMBINE_IN_LABEL_SLIDER_CUR].setRect(x, y, u5, h);
 }
 
-void Input4Combine::setTextOut(const int languageId)
+void CombineInput::setTextOut(const int languageId)
 {
 	m_vTextLabel[COMBINE_IN_LABEL_VIDEO_FOLDER] = "Media Folder";
 	m_vTextLabel[COMBINE_IN_LABEL_ADD_VIDEOS] = "Add Videos or Images";
@@ -199,7 +199,7 @@ void Input4Combine::setTextOut(const int languageId)
 
 }
 
-void Input4Combine::resetRectToZeros()
+void CombineInput::resetRectToZeros()
 {
 	for (QRect &r : m_vRectLabel) {
 		r.setRect(0, 0, 0, 0);
@@ -215,7 +215,7 @@ void Input4Combine::resetRectToZeros()
 }
 
 
-void Input4Combine::getInputVideoFiles(std::vector<std::string> &vFileNames)
+void CombineInput::getInputVideoFiles(std::vector<std::string> &vFileNames)
 {
 	vFileNames.clear();
 	int n = m_inputFileTable->rowCount();
@@ -225,7 +225,7 @@ void Input4Combine::getInputVideoFiles(std::vector<std::string> &vFileNames)
 	}
 }
 
-void Input4Combine::appendAllInputVideos(const std::vector<std::string> &vFileNames)
+void CombineInput::appendAllInputVideos(const std::vector<std::string> &vFileNames)
 {
 	BOOST_FOREACH(const string &f, vFileNames) {
 		appendOneInputVideo(f);
@@ -233,7 +233,7 @@ void Input4Combine::appendAllInputVideos(const std::vector<std::string> &vFileNa
 	enableDisableButtons();
 }
 
-std::string  Input4Combine::appendOneInputVideo(const std::string  &fileName)
+std::string  CombineInput::appendOneInputVideo(const std::string  &fileName)
 {
 	QList<QTableWidgetItem *> v = m_inputFileTable->findItems(QString::fromStdString(fileName), Qt::MatchExactly);
 	if (v.size() > 0) {
@@ -250,7 +250,7 @@ std::string  Input4Combine::appendOneInputVideo(const std::string  &fileName)
 	return "";
 }
 
-void Input4Combine::removeAllInputVideos()
+void CombineInput::removeAllInputVideos()
 {
 	while (m_inputFileTable->rowCount() > 0) {
 		removeOneInputVideo(0);
@@ -258,7 +258,7 @@ void Input4Combine::removeAllInputVideos()
 	enableDisableButtons();
 }
 
-void Input4Combine::removeOneInputVideo(const int idx)
+void CombineInput::removeOneInputVideo(const int idx)
 {
 	if (idx >= 0 && idx < m_inputFileTable->rowCount()) {
 		m_inputFileTable->removeRow(idx);
@@ -266,7 +266,7 @@ void Input4Combine::removeOneInputVideo(const int idx)
 	enableDisableButtons();
 }
 
-void Input4Combine::getCurrentInputVideoFileName(int &idx, string &fname)
+void CombineInput::getCurrentInputVideoFileName(int &idx, string &fname)
 {
 	idx = -1;
 	fname = "";
@@ -282,7 +282,7 @@ void Input4Combine::getCurrentInputVideoFileName(int &idx, string &fname)
 
 
 //step=-1/1  <----------> move up/down
-void Input4Combine::moveUpOrDown(const int step)
+void CombineInput::moveUpOrDown(const int step)
 {
 	const int n = m_inputFileTable->rowCount();
 	if (n < 2) {
@@ -308,7 +308,7 @@ void Input4Combine::moveUpOrDown(const int step)
 
 
 // takes and returns the whole row
-QList<QTableWidgetItem*> Input4Combine::takeRow(int row)
+QList<QTableWidgetItem*> CombineInput::takeRow(int row)
 {
 	QList<QTableWidgetItem*> rowItems;
 	for (int col = 0; col < m_inputFileTable->columnCount(); ++col)
@@ -319,7 +319,7 @@ QList<QTableWidgetItem*> Input4Combine::takeRow(int row)
 }
 
 // sets the whole row
-void Input4Combine::setRow(int row, const QList<QTableWidgetItem*>& rowItems)
+void CombineInput::setRow(int row, const QList<QTableWidgetItem*>& rowItems)
 {
 	for (int col = 0; col < m_inputFileTable->columnCount(); ++col)
 	{
@@ -327,22 +327,22 @@ void Input4Combine::setRow(int row, const QList<QTableWidgetItem*>& rowItems)
 	}
 }
 
-void Input4Combine::enableDisableButtons()
+void CombineInput::enableDisableButtons()
 {
 	//enable all
 	for (int i = COMBINE_IN_PBUTTON_LOAD_ALL; i <= COMBINE_IN_PBUTTON_DOWN; ++i) {
-		m_vPushBotton[i]->setEnabled(true);
+		m_vPushButton[i]->setEnabled(true);
 	}
 
 	const int n = m_inputFileTable->rowCount();
 	if (n == 0) {
-		m_vPushBotton[COMBINE_IN_PBUTTON_REMOVE_ALL]->setEnabled(false);
-		m_vPushBotton[COMBINE_IN_PBUTTON_REMOVE_ONE]->setEnabled(false);
-		m_vPushBotton[COMBINE_IN_PBUTTON_UP]->setEnabled(false);
-		m_vPushBotton[COMBINE_IN_PBUTTON_DOWN]->setEnabled(false);
+		m_vPushButton[COMBINE_IN_PBUTTON_REMOVE_ALL]->setEnabled(false);
+		m_vPushButton[COMBINE_IN_PBUTTON_REMOVE_ONE]->setEnabled(false);
+		m_vPushButton[COMBINE_IN_PBUTTON_UP]->setEnabled(false);
+		m_vPushButton[COMBINE_IN_PBUTTON_DOWN]->setEnabled(false);
 	}
 	else if (n == 1) {
-		m_vPushBotton[COMBINE_IN_PBUTTON_UP]->setEnabled(false);
-		m_vPushBotton[COMBINE_IN_PBUTTON_DOWN]->setEnabled(false);
+		m_vPushButton[COMBINE_IN_PBUTTON_UP]->setEnabled(false);
+		m_vPushButton[COMBINE_IN_PBUTTON_DOWN]->setEnabled(false);
 	}
 }

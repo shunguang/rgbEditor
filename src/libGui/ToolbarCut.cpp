@@ -65,20 +65,37 @@ void ToolbarCut::resizeUI(const bool isInit)
 
 void ToolbarCut::calToolbarRects(const bool isInit)
 {
-	ToolbarBase::calToolbarRects(isInit);
+	if (!isActive()) {
+		m_rectStartQuit.setRect(0, 0, 0, 0);
+		m_rectGrpBoxCut.setRect(0, 0, 0, 0);
+		return;
+	}
 
-	//cal Rect of <m_rectGrpBoxCut>
-	const int h = APP_LINE_HEIGHT;
+	//-------------------------------------------------------------------
+	// [ grpBoxCut grpBoxStartQuit (define in Toobarbase)]  
+	//-------------------------------------------------------------------
+
+	//cal Rect of <m_rectGrpBoxCut> and <m_rectStartQuit>
 	const int b = APP_GUI_BORDER_SIZE;
-	const int w0 = m_grpBoxParent->width() - m_startQuitRect.width() - 2*b;
-	const int h0 = m_grpBoxParent->height() - 2 * b;
-	m_rectGrpBoxCut.setRect(b, b, w0, h0);
+	const int w0 = m_grpBoxParent->width();
+	const int h0 = m_grpBoxParent->height();
+
+	int x=b, y = b;
+	int w2 = 150;  //start/quit button grp width
+	int w1 = w0 - w2 - 2*b;
+	int h = h0 - 2 * b;
+
+	m_rectGrpBoxCut.setRect(x, y, w1, h);
+	
+	x += w1 + b;
+	m_rectStartQuit.setRect(x, y, w2, h);
 
 	//cal rect of label, line edit and pushbutton
-	int x = b, y = b;
-	int w1 = 70, w2=0, w3=30;
-
+	int w3 = 30;
+	x = b; y = b;
+	w1 = 70;
 	w2 = w0 - (w1 + w3 + 3 * b);   //lineEdit width
+	h = APP_LINE_HEIGHT;
 	for (int i = 0; i < CUT_PBUTTON_CNT; ++i) {
 		x = b;
 		m_vRectLabelCut[i].setRect(x, y, w1, h);
@@ -110,8 +127,8 @@ void ToolbarCut::createWidgets()
 void ToolbarCut::initSettings(AppCfgPtr &cfg)
 {
 
-	CfgInputCut prmIn;
-	CfgOutputCut prmOut;
+	CfgCutInput prmIn;
+	CfgCutOutput prmOut;
 
 	cfg->getInput(prmIn);
 	cfg->getOutput(prmOut);

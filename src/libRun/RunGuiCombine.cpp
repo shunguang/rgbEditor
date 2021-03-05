@@ -31,14 +31,14 @@ RunGuiCombine::RunGuiCombine(RunGuiDcPtr &dc)
 
 	//input widgets
 	m_inWgts = pp->m_in;
-	QObject::connect(m_inWgts->m_vPushBotton[COMBINE_IN_PBUTTON_BROWSE_FOLDER], SIGNAL(clicked()), this, SLOT(on_pushBotton_combineBrowseFolder_clicked()), MY_QT_CONN);
-	QObject::connect(m_inWgts->m_vPushBotton[COMBINE_IN_PBUTTON_LOAD_ALL], SIGNAL(clicked()), this, SLOT(on_pushBotton_combineLoadAll_clicked()), MY_QT_CONN);
-	QObject::connect(m_inWgts->m_vPushBotton[COMBINE_IN_PBUTTON_REMOVE_ALL], SIGNAL(clicked()), this, SLOT(on_pushBotton_combineRemoveAll_clicked()), MY_QT_CONN);
-	QObject::connect(m_inWgts->m_vPushBotton[COMBINE_IN_PBUTTON_APPEND_ONE], SIGNAL(clicked()), this, SLOT(on_pushBotton_combineBrowseAppendOne_clicked()), MY_QT_CONN);
-	QObject::connect(m_inWgts->m_vPushBotton[COMBINE_IN_PBUTTON_REMOVE_ONE], SIGNAL(clicked()), this, SLOT(on_pushBotton_combineBrowseRemoveOne_clicked()), MY_QT_CONN);
-	QObject::connect(m_inWgts->m_vPushBotton[COMBINE_IN_PBUTTON_UP], SIGNAL(clicked()), this, SLOT(on_pushBotton_combineUp_clicked()), MY_QT_CONN);
-	QObject::connect(m_inWgts->m_vPushBotton[COMBINE_IN_PBUTTON_DOWN], SIGNAL(clicked()), this, SLOT(on_pushBotton_combineDown_clicked()), MY_QT_CONN);
-	QObject::connect(m_inWgts->m_vPushBotton[COMBINE_IN_PBUTTON_BROWSE_MP3_FILE], SIGNAL(clicked()), this, SLOT(on_pushBotton_combineBrowseMp3_clicked()), MY_QT_CONN);
+	QObject::connect(m_inWgts->m_vPushButton[COMBINE_IN_PBUTTON_BROWSE_FOLDER], SIGNAL(clicked()), this, SLOT(on_pushButton_combineBrowseFolder_clicked()), MY_QT_CONN);
+	QObject::connect(m_inWgts->m_vPushButton[COMBINE_IN_PBUTTON_LOAD_ALL], SIGNAL(clicked()), this, SLOT(on_pushButton_combineLoadAll_clicked()), MY_QT_CONN);
+	QObject::connect(m_inWgts->m_vPushButton[COMBINE_IN_PBUTTON_REMOVE_ALL], SIGNAL(clicked()), this, SLOT(on_pushButton_combineRemoveAll_clicked()), MY_QT_CONN);
+	QObject::connect(m_inWgts->m_vPushButton[COMBINE_IN_PBUTTON_APPEND_ONE], SIGNAL(clicked()), this, SLOT(on_pushButton_combineBrowseAppendOne_clicked()), MY_QT_CONN);
+	QObject::connect(m_inWgts->m_vPushButton[COMBINE_IN_PBUTTON_REMOVE_ONE], SIGNAL(clicked()), this, SLOT(on_pushButton_combineBrowseRemoveOne_clicked()), MY_QT_CONN);
+	QObject::connect(m_inWgts->m_vPushButton[COMBINE_IN_PBUTTON_UP], SIGNAL(clicked()), this, SLOT(on_pushButton_combineUp_clicked()), MY_QT_CONN);
+	QObject::connect(m_inWgts->m_vPushButton[COMBINE_IN_PBUTTON_DOWN], SIGNAL(clicked()), this, SLOT(on_pushButton_combineDown_clicked()), MY_QT_CONN);
+	QObject::connect(m_inWgts->m_vPushButton[COMBINE_IN_PBUTTON_BROWSE_MP3_FILE], SIGNAL(clicked()), this, SLOT(on_pushButton_combineBrowseMp3_clicked()), MY_QT_CONN);
 	QObject::connect(m_inWgts->m_sliderMp3, SIGNAL(valueChanged(int)), this, SLOT(on_sliderMp3_valueChgd(int)), MY_QT_CONN);
 	QObject::connect(m_inWgts->m_vLineEdit[COMBINE_IN_LEDIT_CNT], 
 			SIGNAL(textEdited(const QString &)), this, SLOT(on_lineEdit_inputVideoFolder_edited(const QString &)), MY_QT_CONN);
@@ -47,7 +47,7 @@ RunGuiCombine::RunGuiCombine(RunGuiDcPtr &dc)
 	
 	//output widgets
 	m_outWgts = pp->m_out;
-	QObject::connect(m_outWgts->m_vPushBottonOut[OUT_PBUTTON_BROWSE_FOLDER], SIGNAL(clicked()), this, SLOT(on_pushBotton_outputFolder_clicked()), MY_QT_CONN);
+	QObject::connect(m_outWgts->m_vPushBottonOut[OUT_PBUTTON_BROWSE_FOLDER], SIGNAL(clicked()), this, SLOT(on_pushButton_outputFolder_clicked()), MY_QT_CONN);
 	QObject::connect(m_outWgts->m_vLineEditOut[OUT_LINE_EDIT_FOLDER],
 		SIGNAL(textEdited(const QString &)), this, SLOT(on_lineEdit_outputVideoFolder_edited(const QString &)), MY_QT_CONN);
 	QObject::connect(m_outWgts->m_vLineEditOut[OUT_LINE_EDIT_USER_DEF_DIM_W],
@@ -74,7 +74,7 @@ RunGuiCombine::~RunGuiCombine()
 }
 
 
-void RunGuiCombine::on_pushBotton_combineBrowseFolder_clicked()
+void RunGuiCombine::on_pushButton_combineBrowseFolder_clicked()
 {
 	QString initFolder = QString::fromStdString(m_inputCfg.inputVideoFolder);
 	QString dir = QFileDialog::getExistingDirectory(this, tr("Open Input Video Folder"), initFolder, QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
@@ -83,17 +83,10 @@ void RunGuiCombine::on_pushBotton_combineBrowseFolder_clicked()
 	on_lineEdit_inputVideoFolder_edited(dir);
 }
 
-void RunGuiCombine::on_pushBotton_combineBrowseMp3_clicked()
+void RunGuiCombine::on_pushButton_combineBrowseMp3_clicked()
 {
-	string f0 = m_inputCfg.mp3File;
-	std::string head, tail;
-	app::splitFolder(f0, head, tail);
-
-	boost::filesystem::path p(head);
-	if (!boost::filesystem::exists(p)) {
-		head = "c:/temp";
-	}
-	QString initFolder = QString::fromStdString(head);
+	std::string dir = getDirFromFilepath(m_inputCfg.mp3File);
+	QString initFolder = QString::fromStdString(dir);
 	QString initFilter = QString::fromStdString("*.mp3");
 
 	QString ff = QFileDialog::getOpenFileName(this, tr("Open mp3 File"), initFolder, initFilter);
@@ -102,7 +95,7 @@ void RunGuiCombine::on_pushBotton_combineBrowseMp3_clicked()
 	on_lineEdit_inputMp3Path_edited(ff);
 }
 
-void RunGuiCombine::on_pushBotton_combineLoadAll_clicked()
+void RunGuiCombine::on_pushButton_combineLoadAll_clicked()
 {
 	const string &folder = m_inputCfg.inputVideoFolder;
 	boost::filesystem::path p(folder);
@@ -117,12 +110,12 @@ void RunGuiCombine::on_pushBotton_combineLoadAll_clicked()
 	m_inWgts->appendAllInputVideos(vFileNames);
 }
 
-void RunGuiCombine::on_pushBotton_combineRemoveAll_clicked()
+void RunGuiCombine::on_pushButton_combineRemoveAll_clicked()
 {
 	m_inWgts->removeAllInputVideos();
 }
 
-void RunGuiCombine::on_pushBotton_combineBrowseAppendOne_clicked()
+void RunGuiCombine::on_pushButton_combineBrowseAppendOne_clicked()
 {
 	const string &folder = m_inputCfg.inputVideoFolder;
 	boost::filesystem::path p(folder);
@@ -143,7 +136,7 @@ void RunGuiCombine::on_pushBotton_combineBrowseAppendOne_clicked()
 	}
 }
 
-void RunGuiCombine::on_pushBotton_combineBrowseRemoveOne_clicked()
+void RunGuiCombine::on_pushButton_combineBrowseRemoveOne_clicked()
 {
 	int idx;
 	string fname;
@@ -153,12 +146,12 @@ void RunGuiCombine::on_pushBotton_combineBrowseRemoveOne_clicked()
 	}
 }
 
-void RunGuiCombine::on_pushBotton_combineUp_clicked()
+void RunGuiCombine::on_pushButton_combineUp_clicked()
 {
 	m_inWgts->moveUpOrDown(-1);
 }
 
-void RunGuiCombine::on_pushBotton_combineDown_clicked()
+void RunGuiCombine::on_pushButton_combineDown_clicked()
 {
 	m_inWgts->moveUpOrDown(1);
 }
@@ -186,19 +179,21 @@ void RunGuiCombine::on_sliderMp3_valueChgd(int value)
 
 
 //output widgets
-void RunGuiCombine::on_pushBotton_outputFolder_clicked()
+void RunGuiCombine::on_pushButton_outputFolder_clicked()
 {
 	QString initFolder = QString::fromStdString(m_outputCfg.outputVideoFolder);
 	QString dir = QFileDialog::getExistingDirectory(this, tr("Open Input Video Folder"), initFolder, QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
 
-	m_inWgts->m_vLineEdit[OUT_LINE_EDIT_FOLDER]->setText(dir);
-	on_lineEdit_outputVideoFolder_edited(dir);
+	if (!dir.isEmpty()) {
+		m_outWgts->m_vLineEditOut[OUT_LINE_EDIT_FOLDER]->setText(dir);
+		on_lineEdit_outputVideoFolder_edited(dir);
+	}
 }
 
 void RunGuiCombine::on_lineEdit_outputVideoFolder_edited(const QString &s)
 {
-	std::string dir2 = s.toStdString();
-	m_outputCfg.outputVideoFolder = dir2;
+	if ( !s.isEmpty() )
+		m_outputCfg.outputVideoFolder = s.toStdString();
 }
 
 void RunGuiCombine::on_lineEdit_outputUserDefineW_edited(const QString &s)

@@ -18,8 +18,8 @@
 *-------------------------------------------------------------------
 */
 
-#ifndef __INPUT_4_COMBINE_H__
-#define __INPUT_4_COMBINE_H__
+#ifndef __COMBINE_INPUT_H__
+#define __COMBINE_INPUT_H__
 #include "libCfg/AppCfg.h"
 #include "libUtil/libUtil.h"
 #include "GuiUtil.h"
@@ -56,11 +56,11 @@ namespace app {
 		COMBINE_IN_LABEL_CNT
 	};
 
-	class Input4Combine
+	class CombineInput
 	{
 	public:
-		Input4Combine( QGroupBox *parentGrp );
-		virtual ~Input4Combine();
+		CombineInput( QGroupBox *parentGrp );
+		virtual ~CombineInput();
 
 		virtual void retranslateUI();
 		virtual void createWidgets();
@@ -87,7 +87,7 @@ namespace app {
 
 		QLabel      *m_vLabel[COMBINE_IN_LABEL_CNT];
 		QLineEdit	*m_vLineEdit[COMBINE_IN_LEDIT_CNT];
-		QPushButton *m_vPushBotton[COMBINE_IN_PBUTTON_CNT];
+		QPushButton *m_vPushButton[COMBINE_IN_PBUTTON_CNT];
 		QSlider		*m_sliderMp3;
 		QTableWidget *m_inputFileTable;
 
@@ -108,7 +108,7 @@ namespace app {
 		QStringList m_tableHeader;
 	};
 
-	typedef std::shared_ptr<Input4Combine>		Input4CombinePtr;
+	typedef std::shared_ptr<CombineInput>		CombineInputPtr;
 }
 
 #endif

@@ -298,3 +298,17 @@ bool app::isImgeFile(const std::string &filePath)
 
 	return false;
 }
+
+
+std::string app::getDirFromFilepath(const std::string &f)
+{
+	std::string dir, tail;
+	app::splitFolder(f, dir, tail);
+
+	boost::filesystem::path p(dir);
+	if (!boost::filesystem::exists(p)) {
+		dir = ".";
+	}
+
+	return dir;
+}

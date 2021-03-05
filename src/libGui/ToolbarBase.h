@@ -42,7 +42,7 @@ namespace app {
 	public:
 		const AppToolbarTask	m_taskId;
 
-		QGroupBox	*m_grpBoxParent;
+		QGroupBox	*m_grpBoxParent;          //parent of current toolbar grp
 
 		//all derived classes need the folloowing three
 		QGroupBox	*m_grpBoxStartQuit;
@@ -50,7 +50,7 @@ namespace app {
 		QPushButton	*m_quitTaskButton;
 
 	protected:
-		QRect		m_startQuitRect;
+		QRect		m_rectStartQuit;
 
 	};
 	typedef std::shared_ptr<ToolbarBase>		ToolbarBasePtr;

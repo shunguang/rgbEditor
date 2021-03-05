@@ -27,6 +27,7 @@ RunGuiMain::RunGuiMain(AppCfgPtr &cfg, QWidget *parent)
 	, m_dc(NULL)
 	, m_combineTask(NULL)
 	, m_cutTask(NULL)
+	, m_editTask(NULL)
 {
 	m_dc.reset(new RunGuiDc(m_cfg, m_ui));
 
@@ -57,6 +58,11 @@ RunGuiMain::RunGuiMain(AppCfgPtr &cfg, QWidget *parent)
 
 	//1.3 create Toolbar Cut task
 	m_cutTask.reset(new RunGuiCut(m_dc));
+
+
+	//1.4 create Toolbar edit task
+	m_editTask.reset(new RunGuiEdit(m_dc));
+
 
 	//2. other threads
 	boost::this_thread::sleep(boost::posix_time::milliseconds(500));

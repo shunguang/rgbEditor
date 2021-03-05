@@ -23,7 +23,7 @@ using namespace std;
 ToolbarBase::ToolbarBase(const AppToolbarTask t, QGroupBox *parentGrp )
 	: m_taskId(t)
 	, m_grpBoxParent(parentGrp)
-	, m_startQuitRect(0,0,0,0)
+	, m_rectStartQuit(0,0,0,0)
 {
 	appAssert(m_taskId >= 0 && m_taskId < APP_TOOLBAR_ITEM_CNT, "ToolbarBase::ToolbarBase(): invalid taskId");
 }
@@ -43,9 +43,9 @@ void ToolbarBase::resizeUI(const bool isInit)
 {
 	const int h = APP_LINE_HEIGHT;
 	const int b = APP_GUI_BORDER_SIZE;
-	int w = m_startQuitRect.width() - 2 * b;
+	int w = m_rectStartQuit.width() - 2 * b;
 
-	m_grpBoxStartQuit->setGeometry( m_startQuitRect );
+	m_grpBoxStartQuit->setGeometry( m_rectStartQuit );
 	m_startTaskButton->setGeometry(b, b, w, h);
 	m_quitTaskButton->setGeometry(b, 2*b+h, w, h);
 }
@@ -60,18 +60,6 @@ void ToolbarBase::retranslateUI()
 
 void ToolbarBase::calToolbarRects(const bool isInit)
 {
-	if (!isActive()) {
-		m_startQuitRect.setRect(0, 0, 0, 0);
-		return;
-	}
-
-	int b = APP_GUI_BORDER_SIZE;
-	int w0 = m_grpBoxParent->width();
-	int h0 = m_grpBoxParent->height();
-
-	int w = 150;
-	int x = w0-w, y = b;
-	m_startQuitRect.setRect(x, y, w, h0 - 2 * b);
 }
 
 bool ToolbarBase::isActive()

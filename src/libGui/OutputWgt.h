@@ -18,8 +18,8 @@
 *-------------------------------------------------------------------
 */
 
-#ifndef __OUTPUT_GRP_H__
-#define __OUTPUT_GRP_H__
+#ifndef __OUTPUT_WGT_H__
+#define __OUTPUT_WGT_H__
 #include "libCfg/AppCfg.h"
 #include "libUtil/libUtil.h"
 #include "GuiUtil.h"
@@ -61,11 +61,11 @@ namespace app {
 		OUT_LABEL_CNT
 	};
 
-	class OutputGrp
+	class OutputWgt
 	{
 	public:
-		OutputGrp( QGroupBox *parentGrp );
-		virtual ~OutputGrp();
+		OutputWgt( QGroupBox *parentGrp );
+		virtual ~OutputWgt();
 
 		virtual void retranslateUI();
 		virtual void createWidgets();
@@ -132,7 +132,7 @@ namespace app {
 		ImgSize					 m_userDefOuputVideoImgDim;
 	};
 
-	typedef std::shared_ptr<OutputGrp>		OutputGrpPtr;
+	typedef std::shared_ptr<OutputWgt>		OutputWgtPtr;
 }
 
 #endif

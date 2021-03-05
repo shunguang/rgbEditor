@@ -56,21 +56,36 @@ void ToolbarCombine::resizeUI(const bool isInit)
 
 void ToolbarCombine::calToolbarRects(const bool isInit)
 {
-	const int h = APP_LINE_HEIGHT;
-	const int b = APP_GUI_BORDER_SIZE;
+	if (!isActive()) {
+		m_rectGrpBoxIn.setRect(0, 0, 0, 0);
+		m_rectGrpBoxOut.setRect(0, 0, 0, 0);
+		m_rectStartQuit.setRect(0, 0, 0, 0);
+		return;
+	}
 
-	ToolbarBase::calToolbarRects( isInit );
+	const int b = APP_GUI_BORDER_SIZE;
+	const int w0 = m_grpBoxParent->width();
+	const int h0 = m_grpBoxParent->height();
 
 	//-------------------------------------------------------------------
 	// [ grpBoxIn | GrpBoxOut | grpBoxStartQuit (define in Toobarbase)]  
 	//-------------------------------------------------------------------
-	const int w0 = m_grpBoxParent->width() - m_startQuitRect.width() - 2 * b;
-	const int h0 = m_grpBoxParent->height() - 2*b;
-	int w1 = w0 / 2;
-	int w2 = w0 - w1 - 2*b;
 
-	m_rectGrpBoxIn.setRect(b, b, w1, h0);
-	m_rectGrpBoxOut.setRect(b+w1+b, b, w2, h0);
+	const int w3 = 150;  //start/quit button grp width
+	const int y = b;
+	const int h = h0 - 2 * b;
+
+	const int w12 = w0 - w3 - 2 * b;
+	int w1 = w12 / 2;
+	int w2 = w12 - w1 - 2*b;
+	int x=b;
+	m_rectGrpBoxIn.setRect(x, y, w1, h);
+	
+	x += w1 + b;
+	m_rectGrpBoxOut.setRect(x, y, w2, h);
+
+	x += w2 + b;
+	m_rectStartQuit.setRect(x, y, w3, h);
 }
 
 void ToolbarCombine::createWidgets()
@@ -79,21 +94,21 @@ void ToolbarCombine::createWidgets()
 	m_grpBoxIn = new QGroupBox(m_grpBoxParent);
 	m_grpBoxOut = new QGroupBox(m_grpBoxParent);
 
-	m_in.reset(new Input4Combine(m_grpBoxIn));
+	m_in.reset(new CombineInput(m_grpBoxIn));
 	m_in->createWidgets();
 
-	m_out.reset(new OutputGrp(m_grpBoxOut) );
+	m_out.reset(new OutputWgt(m_grpBoxOut) );
 	m_out->createWidgets();
 }
 
 void ToolbarCombine::initSettings(AppCfgPtr &cfg)
 {
-	CfgInputCombine x;
+	CfgCombineInput x;
 	cfg->getInput(x);
 
 	//QLabel      *m_vLabel[COMBINE_IN_LABEL_CNT];
 	//QLineEdit	*m_vLineEdit[COMBINE_IN_LEDIT_CNT];
-	//QPushButton *m_vPushBotton[COMBINE_IN_PBUTTON_CNT];
+	//QPushButton *m_vPushButton[COMBINE_IN_PBUTTON_CNT];
 	if (x.inputVideoFolder.length() > 0)
 		m_in->m_vLineEdit[COMBINE_IN_LEDIT_INPUT_FOLDER]->setText(QString::fromStdString(x.inputVideoFolder));
 

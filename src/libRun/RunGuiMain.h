@@ -36,6 +36,7 @@
 #include "RunGuiDc.h"
 #include "RunGuiCombine.h"
 #include "RunGuiCut.h"
+#include "RunGuiEdit.h"
 
 namespace app {
 	class LIBRUN_EXPORT RunGuiMain : public QMainWindow
@@ -75,6 +76,7 @@ namespace app {
 
 		RunGuiCombinePtr	m_combineTask;
 		RunGuiCutPtr		m_cutTask;
+		RunGuiEditPtr		m_editTask;
 	};
 }
 #endif // CLIENTGUI_H

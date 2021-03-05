@@ -22,8 +22,8 @@
 #define __TOOLBAR_COMBINE_H__
 
 #include "ToolbarBase.h"
-#include "OutputGrp.h"
-#include "Input4Combine.h"
+#include "OutputWgt.h"
+#include "CombineInput.h"
 namespace app {
 	enum OutSlider {
 		OUT_SLIDER_MP3_PCT = 0,
@@ -45,8 +45,8 @@ namespace app {
 		virtual void calToolbarRects(const bool isInit);
 
 	public:
-		OutputGrpPtr			m_out;
-		Input4CombinePtr		m_in;
+		OutputWgtPtr		m_out;
+		CombineInputPtr		m_in;
 
 	protected:
 		QGroupBox	*m_grpBoxOut;		//output grp

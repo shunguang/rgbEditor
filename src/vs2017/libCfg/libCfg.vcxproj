@@ -145,34 +145,36 @@
   <ItemGroup>
     <ClCompile Include="..\..\libCfg\AppCfg.cpp" />
     <ClCompile Include="..\..\libCfg\CfgBase.cpp" />
+    <ClCompile Include="..\..\libCfg\CfgEditCtrl.cpp" />
     <ClCompile Include="..\..\libCfg\CfgGui.cpp" />
     <ClCompile Include="..\..\libCfg\CfgInput.cpp" />
     <ClCompile Include="..\..\libCfg\CfgDemuxingDecoding.cpp" />
-    <ClCompile Include="..\..\libCfg\CfgInputCombine.cpp" />
-    <ClCompile Include="..\..\libCfg\CfgInputCut.cpp" />
-    <ClCompile Include="..\..\libCfg\CfgInputEdit.cpp" />
+    <ClCompile Include="..\..\libCfg\CfgCombineInput.cpp" />
+    <ClCompile Include="..\..\libCfg\CfgCutInput.cpp" />
+    <ClCompile Include="..\..\libCfg\CfgEditInput.cpp" />
     <ClCompile Include="..\..\libCfg\CfgLog.cpp" />
     <ClCompile Include="..\..\libCfg\CfgOutput.cpp" />
-    <ClCompile Include="..\..\libCfg\CfgOutputCombine.cpp" />
-    <ClCompile Include="..\..\libCfg\CfgOutputCut.cpp" />
-    <ClCompile Include="..\..\libCfg\CfgOutputEdit.cpp" />
+    <ClCompile Include="..\..\libCfg\CfgCombineOutput.cpp" />
+    <ClCompile Include="..\..\libCfg\CfgCutOutput.cpp" />
+    <ClCompile Include="..\..\libCfg\CfgEditOutput.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\libCfg\AppCfg.h" />
     <ClInclude Include="..\..\libCfg\CfgBase.h" />
     <ClInclude Include="..\..\libCfg\CfgDc.h" />
+    <ClInclude Include="..\..\libCfg\CfgEditCtrl.h" />
     <ClInclude Include="..\..\libCfg\CfgGui.h" />
     <ClInclude Include="..\..\libCfg\CfgInput.h" />
     <ClInclude Include="..\..\libCfg\CfgDefs.h" />
     <ClInclude Include="..\..\libCfg\CfgDemuxingDecoding.h" />
-    <ClInclude Include="..\..\libCfg\CfgInputCombine.h" />
-    <ClInclude Include="..\..\libCfg\CfgInputCut.h" />
-    <ClInclude Include="..\..\libCfg\CfgInputEdit.h" />
+    <ClInclude Include="..\..\libCfg\CfgCombineInput.h" />
+    <ClInclude Include="..\..\libCfg\CfgCutInput.h" />
+    <ClInclude Include="..\..\libCfg\CfgEditInput.h" />
     <ClInclude Include="..\..\libCfg\CfgLog.h" />
     <ClInclude Include="..\..\libCfg\CfgOutput.h" />
-    <ClInclude Include="..\..\libCfg\CfgOutputCombine.h" />
-    <ClInclude Include="..\..\libCfg\CfgOutputCut.h" />
-    <ClInclude Include="..\..\libCfg\CfgOutputEdit.h" />
+    <ClInclude Include="..\..\libCfg\CfgCombineOutput.h" />
+    <ClInclude Include="..\..\libCfg\CfgCutOutput.h" />
+    <ClInclude Include="..\..\libCfg\CfgEditOutput.h" />
     <ClInclude Include="..\..\libCfg\CfgRenderImg.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
